@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bytom.iml" filepath="$PROJECT_DIR$/Bytom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bytom-Mobile-Wallet-Android.iml" filepath="$PROJECT_DIR$/Bytom-Mobile-Wallet-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
