@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Bytom</string>
+
+    <!-- demos -->
+    <string name="request_string">String Request</string>
+    <string name="request_json">Json Request</string>
 </resources>

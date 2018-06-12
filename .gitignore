@@ -28,3 +28,5 @@ app/release
 *.iml
 
 .idea/
+.idea/workspace.xml
+.gradle/buildOutputCleanup/outputFiles.bin
