@@ -4,4 +4,5 @@
     <!-- demos -->
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>
+    <string name="request_gson">Gson Request</string>
 </resources>

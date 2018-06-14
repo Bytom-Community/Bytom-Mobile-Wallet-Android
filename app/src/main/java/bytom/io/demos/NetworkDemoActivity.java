@@ -17,11 +17,12 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONObject;
 
 import bytom.io.R;
+import bytom.io.common.GsonRequest;
 import bytom.io.common.VolleyWrapper;
 
 public class NetworkDemoActivity extends Activity implements View.OnClickListener {
     private TextView mResultShow;
-    private Button mRequestString, mRequestJson;
+    private Button mRequestString, mRequestJson, mRequestGson;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,9 +32,11 @@ public class NetworkDemoActivity extends Activity implements View.OnClickListene
         mResultShow = findViewById(R.id.result_show);
         mRequestString = findViewById(R.id.request_string);
         mRequestJson = findViewById(R.id.request_json);
+        mRequestGson = findViewById(R.id.request_gson);
 
         mRequestString.setOnClickListener(this);
         mRequestJson.setOnClickListener(this);
+        mRequestGson.setOnClickListener(this);
     }
 
     private void newStringRequest() {
@@ -74,6 +77,25 @@ public class NetworkDemoActivity extends Activity implements View.OnClickListene
         VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
+    private void newGsonRequest() {
+        String url = "https://api.github.com/";
+        // Request a string response from the provided URL.
+        GsonRequest jsonRequest = new GsonRequest(url, GithubBean.class, null,
+                new Response.Listener<GithubBean>() {
+                    @Override
+                    public void onResponse(GithubBean response) {
+                        // Display the first 500 characters of the response string.
+                        mResultShow.setText("JsonResult>>> GithubBean: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mResultShow.setText("That didn't work!");
+            }
+        });
+        VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -84,6 +106,11 @@ public class NetworkDemoActivity extends Activity implements View.OnClickListene
 
             case R.id.request_string: {
                 newStringRequest();
+                break;
+            }
+
+            case R.id.request_gson: {
+                newGsonRequest();
                 break;
             }
 

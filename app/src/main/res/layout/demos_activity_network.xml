@@ -21,6 +21,12 @@
         android:layout_height="wrap_content"
         android:text="@string/request_json" />
 
+    <Button
+        android:id="@+id/request_gson"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/request_gson" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
