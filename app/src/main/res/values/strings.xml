@@ -5,4 +5,15 @@
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>
     <string name="request_gson">Gson Request</string>
+
+
+    <string name="trans_record">交易记录</string>
+    <string name="trans_detail">交易详情</string>
+    <string name="trans_detail_send">发送方</string>
+    <string name="trans_detail_receive">接收方</string>
+    <string name="trans_detail_fee">矿工费</string>
+    <string name="trans_detail_ps">备注</string>
+    <string name="trans_detail_num">交易号</string>
+    <string name="trans_detail_time">时间</string>
+
 </resources>
