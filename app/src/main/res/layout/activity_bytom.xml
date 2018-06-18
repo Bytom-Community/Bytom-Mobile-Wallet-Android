@@ -15,4 +15,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/bt_test"
+        style="@style/layout_match_wrap"
+        android:text="交易记录" />
+
 </android.support.constraint.ConstraintLayout>
