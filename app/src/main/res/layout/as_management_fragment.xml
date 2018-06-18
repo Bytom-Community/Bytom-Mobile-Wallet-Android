@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <!-- Coin count -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/as_coin_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#1D2128"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="1000.5" />
+
+        <TextView
+            android:id="@+id/as_equivalent_to_RMB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4pt"
+            android:textColor="#CED1D9"
+            android:textSize="12sp"
+            tools:text="≈ ¥ 4500" />
+    </LinearLayout>
+
+    <include layout="@layout/dividing_line" />
+
+    <!-- Monthly detail -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/as_management_monthly_income"
+                style="@style/AsMonthlyNormal"/>
+
+            <TextView
+                android:id="@+id/as_monthly_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AsMonthlySmall"
+                tools:text="1000.00BTM" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/as_management_monthly_expenditure"
+                style="@style/AsMonthlyNormal" />
+
+            <TextView
+                android:id="@+id/as_monthly_expenditure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AsMonthlySmall"
+                tools:text="500.00BTM"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/dividing_line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7.5dp"
+        android:text="@string/as_management_recent_transactions" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/as_transfer_recent_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/as_bottom_view_height"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/as_transfer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/as_management_transfer"
+            style="@style/AsTransfer"/>
+
+        <Button
+            android:id="@+id/as_receipt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/as_management_receipt"
+            style="@style/AsReceipt"/>
+    </LinearLayout>
+</LinearLayout>

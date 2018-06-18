@@ -1,5 +1,8 @@
 package bytom.io.demos;
 
+/**
+ * Created by Nil on 2018/6/18
+ */
 public class GithubBean {
     private String current_user_url;
     private String team_url;

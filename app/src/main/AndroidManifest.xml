@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".assetmanage.AssetManagementActivity"/>
+
         <!-- demos activity -->
         <activity android:name=".demos.NetworkDemoActivity">
             <!--<intent-filter>
