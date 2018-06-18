@@ -20,6 +20,9 @@ import bytom.io.R;
 import bytom.io.common.GsonRequest;
 import bytom.io.common.VolleyWrapper;
 
+/**
+ * Created by Nil on 2018/6/18
+ */
 public class NetworkDemoActivity extends Activity implements View.OnClickListener {
     private TextView mResultShow;
     private Button mRequestString, mRequestJson, mRequestGson;

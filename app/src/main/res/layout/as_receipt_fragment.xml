@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/as_receipt_qr_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/as_receipt_qr_code_default" />
+
+        <TextView
+            android:id="@+id/as_receipt_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/as_receipt_qr_code"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="BTMSAFASFHASDHFJHDSAKFDSFG.…JFH" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/as_receipt_copy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/as_bottom_view_height"
+        android:layout_alignParentBottom="true"
+        android:background="#10C2AE"
+        android:text="@string/as_transfer_next"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

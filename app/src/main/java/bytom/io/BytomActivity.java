@@ -7,6 +7,8 @@ import android.view.View;
 
 import bytom.io.my.transaction.activity.TransactionListActivity;
 
+import bytom.io.assetmanage.AssetManagementActivity;
+
 public class BytomActivity extends AppCompatActivity {
 
     @Override

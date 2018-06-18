@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name">Bytom</string>
 
+    <!-- Asset Management -->
+    <string name="as_management_default_title">BTM</string>
+    <string name="as_management_monthly_income">Monthly income</string>
+    <string name="as_management_monthly_expenditure">Monthly expenditure</string>
+    <string name="as_management_recent_transactions">Recent transactions</string>
+    <string name="as_management_transfer">Transfer</string>
+    <string name="as_management_receipt">Receipt</string>
+    <string name="as_management_transfer_failed">Transaction failed</string>
+
+    <string name="as_transfer_title">Transfer</string>
+    <string name="as_receipt_title">Collection code</string>
+    <string name="as_transfer_address">Payee wallet address</string>
+    <string name="as_transfer_number">Quantity</string>
+    <string name="as_transfer_comment">Note</string>
+    <string name="as_transfer_gas">Gas</string>
+    <string name="as_transfer_gas_standard">Standard</string>
+    <string name="as_transfer_gas_fast">Fast</string>
+    <string name="as_transfer_gas_customize">Customize</string>
+    <string name="as_transfer_gas_number">Please enter Gas</string>
+    <string name="as_transfer_next">Next</string>
+
     <!-- demos -->
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>
