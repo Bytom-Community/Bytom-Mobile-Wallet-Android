@@ -23,5 +23,12 @@ public class BytomActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.bt_asset_management).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssetManagementActivity.startActivity(BytomActivity.this);
+            }
+        });
     }
 }

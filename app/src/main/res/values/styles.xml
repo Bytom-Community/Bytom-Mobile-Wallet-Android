@@ -44,6 +44,7 @@
         <item name="android:inputType">textPersonName</item>
         <item name="android:textColorHint">#CED1D9</item>
         <item name="colorControlNormal">#CED1D9</item>
+    </style>
 
     <style name="layout_wrap_wrap">
         <item name="android:layout_width">wrap_content</item>
