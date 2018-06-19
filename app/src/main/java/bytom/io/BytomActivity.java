@@ -21,6 +21,7 @@ public class BytomActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(BytomActivity.this, TransactionListActivity.class);
                 startActivity(intent);
+
             }
         });
 
