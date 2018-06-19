@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CFFFFFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_include_title" />
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/CF0F0F0" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/wallet_alias"
+            android:textSize="15dp"
+            android:textColor="@color/CCED1D9" />
+        <EditText
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:hint="@string/input_alias"
+            android:singleLine="true"
+            android:maxLength="25"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/wallet_password"
+            android:textSize="15dp"
+            android:textColor="@color/CCED1D9" />
+        <EditText
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:hint="@string/input_password"
+            android:singleLine="true"
+            android:maxLength="25"
+            android:inputType="textPassword"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/confirm_password"
+            android:textSize="15dp"
+            android:textColor="@color/CCED1D9" />
+        <EditText
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:hint="@string/input_confirm"
+            android:singleLine="true"
+            android:maxLength="25"
+            android:inputType="textPassword"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/add_wallet"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_wallet"
+            android:background="@color/C10C2AE"/>
+    </LinearLayout>
+
+</LinearLayout>

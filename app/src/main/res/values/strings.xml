@@ -37,4 +37,31 @@
     <string name="trans_detail_num">交易号</string>
     <string name="trans_detail_time">时间</string>
 
+    <!-->
+    chinese for wallet
+    <-->
+    <string name="create_wallet">创建钱包</string>
+    <string name="import_wallet">导入钱包</string>
+    <string name="wallet">钱包</string>
+    <string name="add_wallet">添加钱包</string>
+    <string name="wallet_alias">别名</string>
+    <string name="wallet_password">密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="input_alias">请输入钱包名称</string>
+    <string name="input_password">请输入钱包密码</string>
+    <string name="input_confirm">请输入确认密码</string>
+
+    <!-->
+    english for wallet
+    <string name="create_wallet">Create Wallet</string>
+    <string name="import_wallet">Import Wallet</string>
+    <string name="wallet_string">Wallet</string>
+    <string name="add_wallet">Add Wallet</string>
+    <string name="wallet_alias">alias</string>
+    <string name="wallet_password">password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="input_alias">input wallet name please</string>
+    <string name="input_password">input wallet password please</string>
+    <string name="input_confirm">input wallet confirm password please</string>
+    <-->
 </resources>

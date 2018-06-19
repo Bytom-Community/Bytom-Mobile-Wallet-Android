@@ -26,4 +26,15 @@
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>
     <string name="request_gson">Gson Request</string>
+
+    <string name="create_wallet">创建钱包</string>
+    <string name="import_wallet">导入钱包</string>
+    <string name="wallet">钱包</string>
+    <string name="add_wallet">添加钱包</string>
+    <string name="wallet_alias">别名</string>
+    <string name="wallet_password">密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="input_alias">请输入钱包名称</string>
+    <string name="input_password">请输入钱包密码</string>
+    <string name="input_confirm">请输入确认密码</string>
 </resources>
