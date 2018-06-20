@@ -50,6 +50,7 @@
     <string name="input_alias">请输入钱包名称</string>
     <string name="input_password">请输入钱包密码</string>
     <string name="input_confirm">请输入确认密码</string>
+    <string name="about">about BytomWallet</string>
 
     <!-->
     english for wallet

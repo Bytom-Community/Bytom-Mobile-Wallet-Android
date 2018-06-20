@@ -56,4 +56,16 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="CustomToolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="toolbarNavigationButtonStyle">@style/CustomToolbarNavigationButtonStyle</item>
+    </style>
+
+    <style name="CustomToolbarNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+
 </resources>

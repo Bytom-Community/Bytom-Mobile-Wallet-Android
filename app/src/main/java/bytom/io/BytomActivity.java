@@ -40,5 +40,13 @@ public class BytomActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.bt_about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BytomActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
