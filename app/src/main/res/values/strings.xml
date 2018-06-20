@@ -52,6 +52,7 @@
     <string name="input_confirm">请输入确认密码</string>
     <string name="import_hint">直接复制粘比原链钱包文本内容到输入框</string>
     <string name="about">about BytomWallet</string>
+    <string name="private_wallet">私人钱包</string>
 
     <!-->
     english for wallet
@@ -66,5 +67,6 @@
     <string name="input_password">input wallet password please</string>
     <string name="input_confirm">input wallet confirm password please</string>
     <string name="import_hint">please paste the text content of the bytom wallet to input box directly</string>
+    <string name="private_wallet">Private Wallet</string>
     <-->
 </resources>

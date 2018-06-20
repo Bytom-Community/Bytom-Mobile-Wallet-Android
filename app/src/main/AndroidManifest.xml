@@ -60,6 +60,12 @@
             android:screenOrientation="portrait"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".activity.PrivateWalletActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
         <activity android:name=".AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".BytomActivity">

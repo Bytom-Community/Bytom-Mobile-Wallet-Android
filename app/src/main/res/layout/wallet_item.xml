@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp">
+
+    <ImageView
+        android:id="@+id/wallet_icon"
+        style="@style/layout_wrap_wrap"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/wallet" />
+
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toRightOf="@id/wallet_icon"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/layout_match_wrap">
+
+            <TextView
+                android:id="@+id/private_wallet"
+                style="@style/layout_wrap_wrap"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:singleLine="true"
+                android:textSize="15dp"
+                android:text="@string/private_wallet"
+                android:textColor="@color/C999999"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/layout_match_wrap"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/wallet_address"
+                style="@style/layout_wrap_wrap"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="12dp"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:text="BTMDSAHDHSAHDKSAHKDHJSAHDKSAHJKDHJ"
+                android:textColor="@color/CCED1D9"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/enter_detail"
+        style="@style/layout_wrap_wrap"
+        android:src="@drawable/arrow_right"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0"
+        android:paddingTop="15dp"/>
+</RelativeLayout>

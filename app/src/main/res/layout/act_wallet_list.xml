@@ -11,32 +11,40 @@
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:background="@color/CF0F0F0" />
-    <ListView
-        android:id="@+id/wallet_list"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </ListView>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:layout_height="fill_parent"
-        android:layout_width="match_parent">
-        <Button
-            android:id="@+id/create_wallet"
+        <ListView
+            android:id="@+id/wallet_list"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/create_wallet"
-            android:textColor="@color/CFFFFFF"
-            android:background="@color/CD57272"/>
-        <Button
-            android:id="@+id/import_wallet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/import_wallet"
-            android:textColor="@color/CFFFFFF"
-            android:background="@color/C10C2AE"/>
-    </LinearLayout>
+            android:layout_width="match_parent">
+            <Button
+                android:id="@+id/create_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/create_wallet"
+                android:textSize="15dp"
+                android:textColor="@color/CFFFFFF"
+                android:background="@color/CD57272"/>
+            <Button
+                android:id="@+id/import_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/import_wallet"
+                android:textColor="@color/CFFFFFF"
+                android:textSize="15dp"
+                android:background="@color/C10C2AE"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
