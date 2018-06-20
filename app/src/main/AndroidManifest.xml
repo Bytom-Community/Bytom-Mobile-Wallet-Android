@@ -51,9 +51,15 @@
             android:name=".activity.CreateWalletActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false">
         </activity>
-
+        <activity
+            android:name=".activity.ImportWalletActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
         <activity android:name=".AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".BytomActivity">

@@ -1,25 +1,24 @@
 package bytom.io.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
-
 import bytom.io.R;
 
-public class CreateWalletActivity extends Activity{
+public class ImportWalletActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_create_wallet);
+        setContentView(R.layout.act_import_wallet);
         init();
     }
     private void init(){
         findViewById(R.id.iv_left).setOnClickListener(listener);
-        ((TextView)findViewById(R.id.tv_title)).setText(getString(R.string.add_wallet));
+        findViewById(R.id.add_wallet).setOnClickListener(listener);
+        ((TextView)findViewById(R.id.tv_title)).setText(getString(R.string.import_wallet));
     }
 
     View.OnClickListener listener = new View.OnClickListener() {

@@ -45,6 +45,18 @@ public class WalletListActivity extends Activity{
                 }
             }
         });
+
+        findViewById(R.id.import_wallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(WalletListActivity.this, ImportWalletActivity.class);
+                    startActivity(intent);
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
