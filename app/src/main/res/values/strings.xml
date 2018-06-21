@@ -52,7 +52,13 @@
     <string name="input_confirm">请输入确认密码</string>
     <string name="import_hint">直接复制粘比原链钱包文本内容到输入框</string>
     <string name="about">about BytomWallet</string>
+    <string name="home">首页</string>
     <string name="private_wallet">私人钱包</string>
+
+    <!--首页资产、我的-->
+    <string name="nav_assets">资产</string>
+    <string name="nav_mine">我的</string>
+    <string name="title_activity_base">BaseActivity</string>
 
     <!-->
     english for wallet
