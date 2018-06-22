@@ -58,6 +58,8 @@
     <!--首页资产、我的-->
     <string name="nav_assets">资产</string>
     <string name="nav_mine">我的</string>
+    <string name="home_asset_private_money">私房钱</string>
+    <string name="home_asset_total_money">总资产(≈￥)</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <!-->
