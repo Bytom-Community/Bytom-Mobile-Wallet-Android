@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/as_gas_coin_popup_width"
+    android:layout_height="@dimen/as_gas_coin_popup_height"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/as_transfer_gas_coin_type_bg">
+
+    <TextView
+        android:id="@+id/as_transfer_gas_btm"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/as_transfer_gas_btm" />
+
+    <TextView
+        android:id="@+id/as_transfer_gas_mbtm"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/as_transfer_gas_mbtm" />
+
+    <TextView
+        android:id="@+id/as_transfer_gas_neu"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/as_transfer_gas_neu" />
+</LinearLayout>

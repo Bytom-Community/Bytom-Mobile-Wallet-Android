@@ -14,7 +14,7 @@ import bytom.io.R;
  * Created by Nil on 2018/6/18
  */
 public class ReceiptFragment extends AssetManageBaseFragment {
-    public static final String TAG = ReceiptFragment.class.getName();
+    public static final String TAG = ReceiptFragment.class.getSimpleName();
 
     @Nullable
     @Override

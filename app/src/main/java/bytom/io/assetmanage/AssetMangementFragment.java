@@ -20,7 +20,7 @@ import bytom.io.R;
  * Created by Nil on 2018/6/18
  */
 public class AssetMangementFragment extends AssetManageBaseFragment {
-    public static final String TAG = AssetMangementFragment.class.getName();
+    public static final String TAG = AssetMangementFragment.class.getSimpleName();
 
     @BindView(R.id.as_transfer_recent_list) RecyclerView mRecyclerView;
 

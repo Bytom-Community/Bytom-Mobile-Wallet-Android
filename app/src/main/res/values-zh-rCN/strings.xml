@@ -21,6 +21,9 @@
     <string name="as_transfer_gas_customize">自定义</string>
     <string name="as_transfer_gas_number">请输入 Gas</string>
     <string name="as_transfer_next">下一步</string>
+    <string name="as_transfer_gas_btm">BTM</string>
+    <string name="as_transfer_gas_mbtm">mBTM</string>
+    <string name="as_transfer_gas_neu">NEU</string>
 
     <!-- demos -->
     <string name="request_string">String Request</string>

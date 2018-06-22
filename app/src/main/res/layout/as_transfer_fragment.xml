@@ -70,13 +70,28 @@
                 android:text="@string/as_transfer_gas_customize" />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/as_transfer_gas_number"
-            style="@style/AsTransferEdit"
+        <RelativeLayout
+            android:id="@+id/as_transfer_gas_number_container"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/as_transfer_gas_type"
-            android:layout_marginTop="21dp"
-            android:hint="@string/as_transfer_gas_number" />
+            android:visibility="invisible"
+            android:layout_marginTop="21dp">
+            <EditText
+                android:id="@+id/as_transfer_gas_number"
+                style="@style/AsTransferEdit"
+                android:layout_width="match_parent"
+                android:hint="@string/as_transfer_gas_number" />
+
+            <Button
+                android:id="@+id/as_transfer_gas_coin_type"
+                android:layout_width="48dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/as_transfer_gas_coin_type_bg"
+                android:text="BTM" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <Button

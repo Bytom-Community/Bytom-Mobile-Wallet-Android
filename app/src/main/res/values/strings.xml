@@ -21,6 +21,9 @@
     <string name="as_transfer_gas_customize">Customize</string>
     <string name="as_transfer_gas_number">Please enter Gas</string>
     <string name="as_transfer_next">Next</string>
+    <string name="as_transfer_gas_btm">BTM</string>
+    <string name="as_transfer_gas_mbtm">mBTM</string>
+    <string name="as_transfer_gas_neu">NEU</string>
 
     <!-- demos -->
     <string name="request_string">String Request</string>

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Created by Nil on 2018/6/18
  */
 public class TransferConfirmFragment extends Fragment {
-    public static final String TAG = TransferConfirmFragment.class.getName();
+    public static final String TAG = TransferConfirmFragment.class.getSimpleName();
 
     @Nullable
     @Override
