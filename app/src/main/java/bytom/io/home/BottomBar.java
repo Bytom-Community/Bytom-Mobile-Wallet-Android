@@ -21,11 +21,11 @@ import bytom.io.R;
 
 public class BottomBar extends LinearLayout {
     @BindView(R.id.iv_nav_0)
-    ImageView mIvNav2;
+    ImageView mIvNav0;
     @BindView(R.id.tv_nav_0)
-    TextView mTvNav2;
+    TextView mTvNav0;
     @BindView(R.id.rl_nav_0)
-    RelativeLayout mRlNav2;
+    RelativeLayout mRlNav0;
     @BindView(R.id.iv_nav_1)
     ImageView mIvNav1;
     @BindView(R.id.tv_nav_1)
@@ -74,8 +74,8 @@ public class BottomBar extends LinearLayout {
     }
     public void selectTab (int position) {
         mPage = position;
-        View[] iv = {mIvNav1, mIvNav2};
-        View[] tv = {mTvNav1, mTvNav2};
+        View[] iv = {mIvNav0, mIvNav1};
+        View[] tv = {mTvNav0, mTvNav1};
         for (int i = 0; i < iv.length; i++) {
             if (position == i) {
                 iv[i].setSelected(true);

@@ -61,6 +61,19 @@
     <!--首页资产、我的-->
     <string name="nav_assets">资产</string>
     <string name="nav_mine">我的</string>
+    <string name="home_mine_mine">我</string>
+    <string name="home_mine_wallet">钱包</string>
+    <string name="home_mine_transaction_record">交易记录</string>
+
+    <string name="home_mine_node_left">节点</string>
+    <string name="home_mine_node_right">BTM(btmscan.io)</string>
+    <string name="home_mine_currency_left">货币</string>
+    <string name="home_mine_currency_right">人民币-CNY</string>
+    <string name="home_mine_share_left">分享</string>
+    <string name="home_mine_share_right"> </string>
+    <string name="home_mine_update_left">关于Bytom Wallet</string>
+    <string name="home_mine_update_right">1.0212(有新版本)</string>
+
     <string name="home_asset_private_money">私房钱</string>
     <string name="home_asset_total_money">总资产(≈￥)</string>
     <string name="title_activity_base">BaseActivity</string>

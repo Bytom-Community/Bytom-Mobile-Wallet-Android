@@ -24,6 +24,7 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     private static final int TYPE_CONTENT = 1;
     private final Context mContext;
     private final List mList;
+    private final OnAssetClickListener mListener;
 
     @NonNull
     @Override
@@ -41,6 +42,14 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder (@NonNull RecyclerView.ViewHolder holder, int position) {
         if (position == 0){
             HomeAssetTopHolder holder1 = (HomeAssetTopHolder) holder;
+            if (mListener != null){
+                holder1.mIvMenu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick (View v) {
+                        mListener.onMenuClick();
+                    }
+                });
+            }
 
         }else{
             HomeAssetContentHolder holder1 = (HomeAssetContentHolder) holder;
@@ -61,9 +70,10 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
         return mList.size() + 1;
     }
 
-    public HomeAssetAdapter (Context context, List list) {
+    public HomeAssetAdapter (Context context, List list,OnAssetClickListener listener) {
         this.mContext = context;
         this.mList = list;
+        this.mListener = listener;
     }
 
     public class HomeAssetTopHolder extends RecyclerView.ViewHolder {
@@ -102,5 +112,13 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface OnAssetClickListener{
+        public void onMenuClick();
+        public void onSendClick();
+        public void onReciveClick ();
+        public void onScanClick();
+        public void onItemClick();
     }
 }

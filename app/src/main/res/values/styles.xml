@@ -68,20 +68,29 @@
     </style>
 
     <style name="mainNavBarImgStyle">
-        <item name="android:layout_width">35dp</item>
-        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">28dp</item>
+        <item name="android:layout_height">28dp</item>
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">6dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
 
     <style name="mainNavBarTextStyle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">10sp</item>
         <item name="android:paddingTop">2dp</item>
-        <item name="android:textColor">#82858B</item>
+        <item name="android:textColor">@drawable/home_nav_text_selector</item>
+    </style>
+
+    <style name="home_mine_white_text">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ffffff</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
