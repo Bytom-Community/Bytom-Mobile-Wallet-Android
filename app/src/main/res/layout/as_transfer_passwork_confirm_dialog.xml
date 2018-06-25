@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/as_transfer_dialog_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/as_transfer_dialog_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/as_transfer_passwd_dialog_tips"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#D57272"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/as_transfer_wallet_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:inputType="textPassword"
+        android:layout_below="@id/as_transfer_dialog_tips"
+        android:backgroundTint="#CED1D9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/as_transfer_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#CED1D9"
+            android:textColor="@android:color/white"
+            android:text="@string/as_transfer_passwd_cancel" />
+
+        <Button
+            android:id="@+id/as_transfer_commit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#10C2AE"
+            android:textColor="@android:color/white"
+            android:text="@string/as_transfer_passwd_commit" />
+    </LinearLayout>
+
+</RelativeLayout>

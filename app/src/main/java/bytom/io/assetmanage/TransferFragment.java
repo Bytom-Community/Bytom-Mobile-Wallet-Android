@@ -16,6 +16,7 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import bytom.io.R;
 import bytom.io.assetmanage.widget.GasCoinPopupWindowWrapper;
+import bytom.io.assetmanage.widget.PasswordConfirmDialog;
 
 /**
  * Created by Nil on 2018/6/18
@@ -75,5 +76,14 @@ public class TransferFragment extends AssetManageBaseFragment {
     void onClickGasCoinType(Button button) {
         GasCoinPopupWindowWrapper popupWindowWrapper = new GasCoinPopupWindowWrapper(getContext(), button);
         popupWindowWrapper.showAsDropDown(button);
+    }
+
+    private PasswordConfirmDialog mPasswordConfirmDialog;
+
+    @OnClick(R.id.as_transfer_next)
+    void onClickNext(Button next) {
+        //Show password confirm dialog
+        mPasswordConfirmDialog = new PasswordConfirmDialog();
+        mPasswordConfirmDialog.show(getFragmentManager(), "passworkConfirm");
     }
 }
