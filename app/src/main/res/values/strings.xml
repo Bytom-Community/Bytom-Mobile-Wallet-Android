@@ -24,6 +24,9 @@
     <string name="as_transfer_gas_btm">BTM</string>
     <string name="as_transfer_gas_mbtm">mBTM</string>
     <string name="as_transfer_gas_neu">NEU</string>
+    <string name="as_transfer_passwd_dialog_tips">Please enter your wallet password</string>
+    <string name="as_transfer_passwd_cancel">Cancel</string>
+    <string name="as_transfer_passwd_commit">Commit</string>
 
     <!-- demos -->
     <string name="request_string">String Request</string>
