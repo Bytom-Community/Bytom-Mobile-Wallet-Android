@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CFFFFFF">
+
+    <RelativeLayout style="@style/layout_match_match">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:text="Demo"
+            android:textColor="@color/C000000"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/layout_wrap_wrap"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="打开" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/main_right_drawer_layout"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/C000000"
+        android:orientation="vertical"
+        android:paddingTop="35dp">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/switch_wallet_title"
+            android:textColor="@color/CFFFFFF"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_wallet_personal"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/switch_wallet_personal"
+            android:textColor="@color/switch_wallet_selector"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_wallet_vault"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/switch_wallet_vault"
+            android:textColor="@color/switch_wallet_selector"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_wallet_little"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/switch_wallet_little"
+            android:textColor="@color/switch_wallet_selector"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/C909296" />
+
+        <TextView
+            android:id="@+id/tv_wallet_create"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/switch_wallet_create"
+            android:textColor="@color/switch_wallet_selector"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_wallet_import"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/switch_wallet_import"
+            android:textColor="@color/switch_wallet_selector"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

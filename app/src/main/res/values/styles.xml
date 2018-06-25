@@ -1,11 +1,49 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Asset Management -->
+    <style name="AsMonthlyNormal">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">#1D2128</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="AsMonthlySmall">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AsTransfer">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:background">#D57272</item>
+    </style>
+
+    <style name="AsReceipt">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:background">#10C2AE</item>
+    </style>
+
+    <style name="AsTransferEdit" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:layout_height">51dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:textColorHint">#CED1D9</item>
+        <item name="colorControlNormal">#CED1D9</item>
     </style>
 
     <style name="layout_wrap_wrap">
@@ -17,5 +55,22 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="layout_match_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="CustomToolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="toolbarNavigationButtonStyle">@style/CustomToolbarNavigationButtonStyle</item>
+    </style>
+
+    <style name="CustomToolbarNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
 
 </resources>

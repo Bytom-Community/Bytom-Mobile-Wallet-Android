@@ -6,6 +6,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+/**
+ * Created by Nil on 2018/6/11
+ */
 public class VolleyWrapper {
     private static VolleyWrapper mInstance;
     private RequestQueue mRequestQueue;

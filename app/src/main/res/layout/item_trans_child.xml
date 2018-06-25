@@ -28,20 +28,20 @@
                 style="@style/layout_wrap_wrap"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/tv_time"
+                android:layout_toLeftOf="@+id/tv_num"
                 android:ellipsize="middle"
                 android:singleLine="true"
                 android:textSize="15sp"
-                android:textColor="@color/C999999"/>
+                android:textColor="@color/CACACAC"/>
 
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_num"
                 style="@style/layout_wrap_wrap"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:textColor="@color/CCED1D9"/>
+                android:textSize="15sp"
+                android:textColor="@color/C1D2128"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -49,21 +49,21 @@
             android:layout_marginTop="8dp">
 
             <TextView
-                android:id="@+id/tv_coin"
+                android:id="@+id/tv_time"
                 style="@style/layout_wrap_wrap"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/tv_num"
+                android:layout_toLeftOf="@+id/tv_status"
                 android:textSize="12sp"
                 android:textColor="@color/CCED1D9"/>
 
             <TextView
-                android:id="@+id/tv_num"
+                android:id="@+id/tv_status"
                 style="@style/layout_wrap_wrap"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:textSize="12sp"
-                android:textColor="@color/CCED1D9"/>
+                android:textColor="@color/CD57272"/>
         </RelativeLayout>
     </LinearLayout>
 

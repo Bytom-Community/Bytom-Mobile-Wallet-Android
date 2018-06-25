@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".assetmanage.AssetManagementActivity"/>
+
         <activity
             android:name=".my.transaction.activity.TransactionListActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -39,6 +41,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-    </application>
+
+        <activity
+            android:name=".activity.WalletListActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".activity.CreateWalletActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".AboutActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".BytomActivity">
+        </activity>
+
+        <activity android:name=".my.WalletChangeActivtyTemp"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+          >
+        </activity>
+
+</application>
 
 </manifest>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".BytomActivity">
 
     <TextView
@@ -19,5 +20,29 @@
         android:id="@+id/bt_test"
         style="@style/layout_match_wrap"
         android:text="交易记录" />
+
+    <Button
+        android:id="@+id/bt_asset_management"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/bt_test"
+        android:text="资产管理" />
+
+    <Button
+        android:id="@+id/bt_wallet"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/bt_asset_management"
+        android:text="@string/wallet"/>
+
+    <Button
+        android:id="@+id/bt_about"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/bt_wallet"
+        android:text="@string/about"/>
+
+    <Button
+        android:id="@+id/bt_change_wallet"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/bt_about"
+        android:text="切换钱包"/>
 
 </android.support.constraint.ConstraintLayout>

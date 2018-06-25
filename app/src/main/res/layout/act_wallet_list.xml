@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CFFFFFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_include_title" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0" />
+    <ListView
+        android:id="@+id/wallet_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent">
+        <Button
+            android:id="@+id/create_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/create_wallet"
+            android:background="@color/CD57272"/>
+        <Button
+            android:id="@+id/import_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/import_wallet"
+            android:background="@color/C10C2AE"/>
+    </LinearLayout>
+</LinearLayout>

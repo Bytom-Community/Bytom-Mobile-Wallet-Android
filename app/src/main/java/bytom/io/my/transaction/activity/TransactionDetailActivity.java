@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import bytom.io.R;
 
 /**
@@ -16,6 +17,22 @@ import bytom.io.R;
 
 
 public class TransactionDetailActivity extends Activity{
+
+    @BindView(R.id.tv_num)
+    protected TextView mNumView;
+    @BindView(R.id.tv_status)
+    protected TextView mStatusView;
+    @BindView(R.id.tv_receive)
+    protected TextView mReceiveView;
+    @BindView(R.id.tv_fee)
+    protected TextView mFeeView;
+    @BindView(R.id.tv_ps)
+    protected TextView mPsView;
+    @BindView(R.id.tv_trans_num)
+    protected TextView mTransNumView;
+    @BindView(R.id.tv_time)
+    protected TextView mTimeView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
