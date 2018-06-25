@@ -43,4 +43,13 @@
     <string name="import_hint">直接复制粘比原链钱包文本内容到输入框</string>
     <string name="about">关于 BytomWallet</string>
     <string name="private_wallet">私人钱包</string>
+    <string name="change_password">修改密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="private_copy">复制</string>
+    <string name="sec_warn_hint">请确认四周无人及无任何摄像设备，忽用截图或拍照的方式保存钱包文件，切勿将钱包文件保存至邮箱，记录本，网盘，聊天工具等，非常危险</string>
+
 </resources>
