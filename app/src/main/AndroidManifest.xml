@@ -66,6 +66,18 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.BackupWalletActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".BytomActivity">

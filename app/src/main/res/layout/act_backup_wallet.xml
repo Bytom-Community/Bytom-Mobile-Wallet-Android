@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CFFFFFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_include_title" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/CF0F0F0" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/sec_warn"
+            android:textSize="17dp"
+            android:textColor="@color/CD57272"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sec_warn_hint"
+            android:layout_marginTop="8dp"
+            android:textSize="15dp"
+            android:textColor="@color/C999999" />
+
+        <TextView
+            android:id="@+id/wallet_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:textSize="17dp"
+            android:textColor="@color/C1D2128" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/CCED1D9" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/private_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/private_copy"
+        android:textSize="12dp"
+        android:textColor="@color/C10C2AE"
+        android:background="@drawable/buttom_style"/>
+
+</LinearLayout>

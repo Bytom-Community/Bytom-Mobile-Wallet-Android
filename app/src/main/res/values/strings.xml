@@ -60,10 +60,33 @@
     <string name="about">about BytomWallet</string>
     <string name="home">首页</string>
     <string name="private_wallet">私人钱包</string>
+    <string name="change_password">修改密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="private_copy">复制</string>
+    <string name="sec_warn">安全警告:</string>
+    <string name="sec_warn_hint">请确认四周无人及无任何摄像设备，忽用截图或拍照的方式保存钱包文件，切勿将钱包文件保存至邮箱，记录本，网盘，聊天工具等，非常危险</string>
+
 
     <!--首页资产、我的-->
     <string name="nav_assets">资产</string>
     <string name="nav_mine">我的</string>
+    <string name="home_mine_mine">我</string>
+    <string name="home_mine_wallet">钱包</string>
+    <string name="home_mine_transaction_record">交易记录</string>
+
+    <string name="home_mine_node_left">节点</string>
+    <string name="home_mine_node_right">BTM(btmscan.io)</string>
+    <string name="home_mine_currency_left">货币</string>
+    <string name="home_mine_currency_right">人民币-CNY</string>
+    <string name="home_mine_share_left">分享</string>
+    <string name="home_mine_share_right"> </string>
+    <string name="home_mine_update_left">关于Bytom Wallet</string>
+    <string name="home_mine_update_right">1.0212(有新版本)</string>
+
     <string name="home_asset_private_money">私房钱</string>
     <string name="home_asset_total_money">总资产(≈￥)</string>
     <string name="title_activity_base">BaseActivity</string>
@@ -82,5 +105,13 @@
     <string name="input_confirm">input wallet confirm password please</string>
     <string name="import_hint">please paste the text content of the bytom wallet to input box directly</string>
     <string name="private_wallet">Private Wallet</string>
+    <string name="change_password">Reset Password</string>
+    <string name="old_password">old password</string>
+    <string name="new_password">new password</string>
+    <string name="cancel">cancel</string>
+    <string name="confirm">confirm</string>
+    <string name="private_copy">copy</string>
+    <string name="sec_warn">Security warning:</string>
+    <string name="confirm_new_password">confirm new password</string>
     <-->
 </resources>

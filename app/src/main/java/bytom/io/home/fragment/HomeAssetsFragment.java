@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import bytom.io.home.adapter.HomeAssetAdapter;
  * Created by DongFangZhou on 2018/6/21.
  */
 
-public class HomeAssetsFragment extends Fragment {
+public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnAssetClickListener {
     @BindView(R.id.rv_home_asset)
     RecyclerView mRv;
     Unbinder unbinder;
@@ -54,12 +55,37 @@ public class HomeAssetsFragment extends Fragment {
         for (int i = 0; i < 50; i++) {
             list.add(i);
         }
-        mRv.setAdapter(new HomeAssetAdapter(getContext(),list));
+        mRv.setAdapter(new HomeAssetAdapter(getContext(),list,this));
     }
 
     @Override
     public void onDestroyView () {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onMenuClick () {
+        Toast.makeText(getContext(), "侧滑菜单", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSendClick () {
+
+    }
+
+    @Override
+    public void onReciveClick () {
+
+    }
+
+    @Override
+    public void onScanClick () {
+
+    }
+
+    @Override
+    public void onItemClick () {
+
     }
 }

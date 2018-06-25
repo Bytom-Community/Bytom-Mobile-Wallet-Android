@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bottomNav"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     >
 
     <RelativeLayout
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/iv_nav_0"
             style="@style/mainNavBarImgStyle"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/currency_selector"/>
 
         <TextView
             android:id="@+id/tv_nav_0"
@@ -34,7 +34,7 @@
         <ImageView
             android:id="@+id/iv_nav_1"
             style="@style/mainNavBarImgStyle"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/mine_selector"/>
 
         <TextView
             android:id="@+id/tv_nav_1"
