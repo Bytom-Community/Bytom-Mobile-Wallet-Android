@@ -36,12 +36,20 @@
 
     <string name="trans_record">交易记录</string>
     <string name="trans_detail">交易详情</string>
-    <string name="trans_detail_send">发送方</string>
-    <string name="trans_detail_receive">接收方</string>
-    <string name="trans_detail_fee">矿工费</string>
-    <string name="trans_detail_ps">备注</string>
-    <string name="trans_detail_num">交易号</string>
-    <string name="trans_detail_time">时间</string>
+    <string name="trans_detail_status">交易状态</string>
+    <string name="trans_detail_send">发送方&#160;&#160;&#160;&#160;</string>
+    <string name="trans_detail_receive">接收方&#160;&#160;&#160;&#160;</string>
+    <string name="trans_detail_fee">矿工费&#160;&#160;&#160;&#160;</string>
+    <string name="trans_detail_ps">备注&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="trans_detail_num">交易号&#160;&#160;&#160;&#160;</string>
+    <string name="trans_detail_time">时间&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+
+    <string name="switch_wallet_title">切换钱包</string>
+    <string name="switch_wallet_personal">私房钱</string>
+    <string name="switch_wallet_vault">小金库</string>
+    <string name="switch_wallet_little">零钱包</string>
+    <string name="switch_wallet_create">创建钱包</string>
+    <string name="switch_wallet_import">导入钱包</string>
 
     <!-->
     chinese for wallet

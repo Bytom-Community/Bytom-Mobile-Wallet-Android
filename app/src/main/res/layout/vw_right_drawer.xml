@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/C303739"
+    android:orientation="vertical"
+    android:paddingTop="35dp">
+
+    <TextView
+        style="@style/layout_wrap_wrap"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/switch_wallet_title"
+        android:textColor="@color/CFFFFFF"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_wallet_personal"
+        style="@style/layout_wrap_wrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/switch_wallet_personal"
+        android:textColor="@color/switch_wallet_selector"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_wallet_vault"
+        style="@style/layout_wrap_wrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/switch_wallet_vault"
+        android:textColor="@color/switch_wallet_selector"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_wallet_little"
+        style="@style/layout_wrap_wrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/switch_wallet_little"
+        android:textColor="@color/switch_wallet_selector"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/C909296" />
+
+    <TextView
+        android:id="@+id/tv_wallet_create"
+        style="@style/layout_wrap_wrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/switch_wallet_create"
+        android:textColor="@color/switch_wallet_selector"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_wallet_import"
+        style="@style/layout_wrap_wrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/switch_wallet_import"
+        android:textColor="@color/switch_wallet_selector"
+        android:textSize="17sp" />
+
+</LinearLayout>

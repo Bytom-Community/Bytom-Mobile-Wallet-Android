@@ -4,8 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import bytom.io.R;
 
 /**
@@ -15,7 +20,28 @@ import bytom.io.R;
  */
 
 
-public class TransactionDetailActivity extends Activity{
+public class TransactionDetailActivity extends Activity {
+
+    @BindView(R.id.iv_left)
+    ImageView mBackBtn;
+    @BindView(R.id.tv_title)
+    TextView mTitleView;
+    @BindView(R.id.tv_num)
+    TextView mNumView;
+    @BindView(R.id.tv_status)
+    TextView mStatusView;
+    @BindView(R.id.tv_receive)
+    TextView mReceiveView;
+    @BindView(R.id.tv_fee)
+    TextView mFeeView;
+    @BindView(R.id.tv_ps)
+    TextView mPsView;
+    @BindView(R.id.tv_trans_num)
+    TextView mTransNumView;
+    @BindView(R.id.tv_time)
+    TextView mTimeView;
+    private Unbinder unbinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +51,23 @@ public class TransactionDetailActivity extends Activity{
     }
 
     private void init() {
-
-        ((TextView)findViewById(R.id.tv_title)).setText(getString(R.string.trans_detail));
-        findViewById(R.id.iv_left).setOnClickListener(listener);
-
+        unbinder = ButterKnife.bind(this);
+        mTitleView.setText(getString(R.string.trans_detail));
     }
 
-    View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            finish();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(null != unbinder)
+            unbinder.unbind();
+    }
+
+    @OnClick({R.id.iv_left})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_left:
+                finish();
+                break;
         }
-    };
+    }
 }

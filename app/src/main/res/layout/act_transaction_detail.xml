@@ -10,153 +10,214 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/CCED1D9" />
+        android:background="@color/CF3F3F3" />
 
     <TextView
         android:id="@+id/tv_num"
         style="@style/layout_wrap_wrap"
         android:layout_gravity="center"
-        android:layout_margin="25dp"
+        android:layout_margin="15dp"
         android:text="8888.00BTM"
-        android:textColor="@color/C20252D"
+        android:textColor="@color/C1D2128"
         android:textSize="22sp"
         android:textStyle="bold" />
 
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_send"
-        android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/tv_send"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal"
+        >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_status"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
 
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_receive"
-        android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="交易成功"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/tv_receive"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
 
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_fee"
-        android:textSize="15sp" />
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_fee"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_send"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
-
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_ps"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/tv_ps"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_send"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
 
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_num"
-        android:textSize="15sp" />
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_trans_num"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_receive"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
-
-    <TextView
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:text="@string/trans_detail_time"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/tv_time"
-        style="@style/layout_wrap_wrap"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="gdlsk;sdlfgd"
-        android:textColor="@color/CCED1D9"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_receive"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="@color/CCED1D9" />
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
+
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_fee"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_fee"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
+
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_ps"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_ps"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
+
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_num"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_trans_num"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
+
+    <LinearLayout
+        style="@style/layout_match_wrap"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:text="@string/trans_detail_time"
+            android:textColor="@color/CCACACA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/layout_wrap_wrap"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="gdlsk;sdlfgd"
+            android:textColor="@color/CCED1D9"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/CF3F3F3" />
 </LinearLayout>

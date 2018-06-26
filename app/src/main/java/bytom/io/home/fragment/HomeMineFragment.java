@@ -1,5 +1,6 @@
 package bytom.io.home.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,9 +15,11 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import bytom.io.R;
 import bytom.io.home.adapter.HomeMyAdapter;
+import bytom.io.my.transaction.activity.TransactionListActivity;
 
 /**
  * Created by DongFangZhou on 2018/6/21.
@@ -81,6 +84,17 @@ public class HomeMineFragment extends Fragment implements HomeMyAdapter.OnItemCl
                 Toast.makeText(getContext(), "关于", Toast.LENGTH_SHORT).show();
                 break;
 
+        }
+    }
+
+
+    @OnClick({R.id.rl_home_mine_transaction_record})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_home_mine_transaction_record:
+                Intent intent = new Intent(getActivity(), TransactionListActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

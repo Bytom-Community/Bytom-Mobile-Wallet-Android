@@ -10,14 +10,16 @@
         style="@style/layout_wrap_wrap"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:src="@mipmap/chevron_selected" />
+        android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:id="@+id/ll_layout"
         style="@style/layout_match_wrap"
+        android:layout_alignBottom="@+id/iv_icon"
+        android:layout_alignTop="@+id/iv_icon"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
         android:layout_toRightOf="@+id/iv_icon"
         android:orientation="vertical">
 
@@ -28,42 +30,43 @@
                 style="@style/layout_wrap_wrap"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/tv_time"
+                android:layout_toLeftOf="@+id/tv_num"
                 android:ellipsize="middle"
                 android:singleLine="true"
-                android:textSize="15sp"
-                android:textColor="@color/C999999"/>
-
-            <TextView
-                android:id="@+id/tv_time"
-                style="@style/layout_wrap_wrap"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="20dp"
-                android:textSize="12sp"
-                android:textColor="@color/CCED1D9"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            style="@style/layout_match_wrap"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/tv_coin"
-                style="@style/layout_wrap_wrap"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/tv_num"
-                android:textSize="12sp"
-                android:textColor="@color/CCED1D9"/>
+                android:textColor="@color/CACACAC"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_num"
                 style="@style/layout_wrap_wrap"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/C1D2128"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/layout_match_wrap"
+            android:layout_gravity="bottom"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/layout_wrap_wrap"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/tv_status"
+                android:textColor="@color/CCED1D9"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/layout_wrap_wrap"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:textSize="12sp"
-                android:textColor="@color/CCED1D9"/>
+                android:textColor="@color/CD57272"
+                android:textSize="12sp" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -71,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/CCED1D9"
-        android:paddingTop="15dp"/>
+        android:background="@color/CF3F3F3"
+        android:paddingTop="15dp" />
 
 </RelativeLayout>

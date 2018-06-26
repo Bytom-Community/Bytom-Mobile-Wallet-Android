@@ -28,64 +28,75 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
     @BindView(R.id.rv_home_asset)
     RecyclerView mRv;
     Unbinder unbinder;
+    private OnMenuClickListener mMenuListener;
+
+    public void setMenuListener(OnMenuClickListener listener) {
+        this.mMenuListener = listener;
+    }
 
     @Nullable
     @Override
-    public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home_asset, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
     @Override
-    public void onCreate (@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
     @Override
-    public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init();
     }
 
-    private void init () {
+    private void init() {
         mRv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             list.add(i);
         }
-        mRv.setAdapter(new HomeAssetAdapter(getContext(),list,this));
+        mRv.setAdapter(new HomeAssetAdapter(getContext(), list, this));
     }
 
     @Override
-    public void onDestroyView () {
+    public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
 
     @Override
-    public void onMenuClick () {
+    public void onMenuClick() {
         Toast.makeText(getContext(), "侧滑菜单", Toast.LENGTH_SHORT).show();
+        if (null != mMenuListener)
+            mMenuListener.onMenuClick();
     }
 
     @Override
-    public void onSendClick () {
-
-    }
-
-    @Override
-    public void onReciveClick () {
-
-    }
-
-    @Override
-    public void onScanClick () {
+    public void onSendClick() {
 
     }
 
     @Override
-    public void onItemClick () {
+    public void onReciveClick() {
 
+    }
+
+    @Override
+    public void onScanClick() {
+
+    }
+
+    @Override
+    public void onItemClick() {
+
+    }
+
+    public interface OnMenuClickListener {
+        void onMenuClick();
     }
 }

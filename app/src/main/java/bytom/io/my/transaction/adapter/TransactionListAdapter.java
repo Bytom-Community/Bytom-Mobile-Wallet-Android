@@ -110,9 +110,9 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
             childHolder = new ViewHolderChild();
             childHolder.childLayout = (RelativeLayout) convertView.findViewById(R.id.rl_layout);
             childHolder.addrview = (TextView) convertView.findViewById(R.id.tv_addr);
-            childHolder.classifyView = (TextView) convertView.findViewById(R.id.tv_coin);
+            childHolder.classifyView = (TextView) convertView.findViewById(R.id.tv_num);
             childHolder.timeView = (TextView) convertView.findViewById(R.id.tv_time);
-            childHolder.numView = (TextView) convertView.findViewById(R.id.tv_num);
+            childHolder.statusView = (TextView) convertView.findViewById(R.id.tv_status);
             convertView.setTag(childHolder);
         } else {
             childHolder = (ViewHolderChild)convertView.getTag();
@@ -121,7 +121,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
             childHolder.addrview.setText(mChildGroupList.get(i).get(i).getAddr());
             childHolder.classifyView.setText(mChildGroupList.get(i).get(i).getClassify());
             childHolder.timeView.setText(mChildGroupList.get(i).get(i).getTime());
-            childHolder.numView.setText(mChildGroupList.get(i).get(i).getNum());
+            childHolder.statusView.setText(mChildGroupList.get(i).get(i).getNum());
             childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -156,6 +156,6 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
         private TextView addrview;
         private TextView classifyView;
         private TextView timeView;
-        private TextView numView;
+        private TextView statusView;
     }
 }

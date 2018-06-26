@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,4 +22,10 @@
             android:layout_height="60dp"/>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+    <bytom.io.home.RightDrawerView
+        android:id="@+id/main_right_drawer_layout"
+        style="@style/layout_wrap_match"
+        android:layout_gravity="right"/>
+
+</android.support.v4.widget.DrawerLayout>
