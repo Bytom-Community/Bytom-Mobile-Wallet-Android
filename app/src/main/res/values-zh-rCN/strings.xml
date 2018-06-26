@@ -54,7 +54,6 @@
     <string name="confirm">确定</string>
     <string name="private_copy">复制</string>
     <string name="sec_warn_hint">请确认四周无人及无任何摄像设备，忽用截图或拍照的方式保存钱包文件，切勿将钱包文件保存至邮箱，记录本，网盘，聊天工具等，非常危险</string>
-    <string name="copy">复制</string>
     <string name="backup_wallet">备份钱包</string>
 
 </resources>
