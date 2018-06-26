@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="private_wallet">
+        <item>@string/wallet_alias</item>
+        <item>@string/change_password</item>
+        <item>@string/backup_wallet</item>
+    </string-array>
+</resources>

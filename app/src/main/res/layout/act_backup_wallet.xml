@@ -54,6 +54,6 @@
         android:text="@string/private_copy"
         android:textSize="12dp"
         android:textColor="@color/C10C2AE"
-        android:background="@drawable/buttom_style"/>
+        android:background="@drawable/button_style"/>
 
 </LinearLayout>
