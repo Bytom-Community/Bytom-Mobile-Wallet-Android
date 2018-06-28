@@ -9,8 +9,7 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_marginLeft="15dp"/>
 
     <TextView
         android:id="@+id/tv_home_asset_name"
@@ -19,8 +18,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="50dp"
         android:textSize="15sp"
-        android:textColor="@color/C1D2128"
-        android:text="BTM"/>
+        android:textColor="@color/C1D2128"/>
 
     <TextView
         android:id="@+id/tv_home_asset_item_count"
@@ -30,8 +28,7 @@
         android:layout_marginRight="21dp"
         android:layout_marginTop="12dp"
         android:textColor="@color/C1D2128"
-        android:textSize="15sp"
-        android:text="1000.5"/>
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/tv_home_asset_item_money"
@@ -42,7 +39,6 @@
         android:layout_marginTop="39dp"
         android:layout_marginRight="21dp"
         android:textSize="12sp"
-        android:textColor="@color/CCED1D9"
-        android:text="￥4500"/>
+        android:textColor="@color/CCED1D9"/>
 
 </RelativeLayout>

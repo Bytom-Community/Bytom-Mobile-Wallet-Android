@@ -1,5 +1,7 @@
 package bytom.io.common;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -30,7 +32,7 @@ public class GsonRequest<T> extends Request<T> {
      */
     public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
                        Response.Listener<T> listener, Response.ErrorListener errorListener) {
-        super(Method.GET, url, errorListener);
+        super(Method.POST, url, errorListener);
         this.clazz = clazz;
         this.headers = headers;
         this.listener = listener;
@@ -52,6 +54,7 @@ public class GsonRequest<T> extends Request<T> {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
+            Log.d("volley", "response: "+json);
             return Response.success(
                     gson.fromJson(json, clazz),
                     HttpHeaderParser.parseCacheHeaders(response));
