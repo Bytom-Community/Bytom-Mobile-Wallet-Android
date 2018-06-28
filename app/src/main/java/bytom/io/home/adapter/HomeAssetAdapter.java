@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     private final Context mContext;
     private final List<HomeAssetsBean.AssetsBean> mList;
     private final OnAssetClickListener mListener;
+    private DecimalFormat df = new DecimalFormat("###.####");
 
     @NonNull
     @Override
@@ -86,7 +88,7 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
             HomeAssetsBean.AssetsBean bean = mList.get(position - 1);
             holder1.mIvIcon.setImageResource(AssetsMaps.getAssetsIcon(bean.getAssetID()));
             float amount = Float.parseFloat(bean.getAmount()) / 100000000;
-            holder1.mTvItemCount.setText(amount+"");
+            holder1.mTvItemCount.setText(df.format(amount));
             holder1.mTvName.setText(AssetsMaps.getAssetsName(bean.getAssetID()));
         }
     }
