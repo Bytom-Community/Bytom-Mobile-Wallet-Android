@@ -8,21 +8,25 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp">
+        android:layout_height="42dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
             android:text="@string/home_asset_private_money"
             android:textColor="#FFFFFF"/>
 
         <ImageView
             android:id="@+id/iv_home_asset_menu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="end|center_vertical"
+
+            android:src="@mipmap/paragraph_right"/>
     </FrameLayout>
 
     <TextView
@@ -54,14 +58,20 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:layout_marginLeft="26dp"
             android:text="EFDGDSGwrfgfdxg....wwerzsdfgD"
+            android:textSize="12sp"
+            android:maxLines="1"
             android:textColor="#FFFFFF"/>
 
         <ImageView
             android:id="@+id/iv_home_asset_receive"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/qrcode"
             />
 
         <View
@@ -71,16 +81,22 @@
 
         <ImageView
             android:id="@+id/iv_home_asset_scan"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="2dp"
+            android:layout_marginRight="11dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/focus"
             />
 
         <ImageView
             android:id="@+id/iv_home_asset_send"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="2dp"
+            android:layout_marginRight="14dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/move_up"
             />
     </LinearLayout>
 </LinearLayout>

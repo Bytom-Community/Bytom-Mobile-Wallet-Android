@@ -71,29 +71,28 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
 
     @Override
     public void onMenuClick() {
-        Toast.makeText(getContext(), "侧滑菜单", Toast.LENGTH_SHORT).show();
         if (null != mMenuListener)
             mMenuListener.onMenuClick();
     }
 
     @Override
     public void onSendClick() {
-
+        Toast.makeText(getContext(), "转账", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onReciveClick() {
-
+        Toast.makeText(getContext(), "收款", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onScanClick() {
-
+        Toast.makeText(getContext(), "扫描", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onItemClick() {
-
+    public void onItemClick(int position) {
+        Toast.makeText(getContext(), "条目:"+position, Toast.LENGTH_SHORT).show();
     }
 
     public interface OnMenuClickListener {

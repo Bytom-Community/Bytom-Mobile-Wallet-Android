@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder (@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder (@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (position == 0){
             HomeAssetTopHolder holder1 = (HomeAssetTopHolder) holder;
             if (mListener != null){
@@ -49,10 +50,36 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
                         mListener.onMenuClick();
                     }
                 });
+                holder1.mIvReceive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick (View v) {
+                        mListener.onReciveClick();
+                    }
+                });
+                holder1.mIvScan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick (View v) {
+                        mListener.onScanClick();
+                    }
+                });
+                holder1.mIvSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick (View v) {
+                        mListener.onSendClick();
+                    }
+                });
             }
 
         }else{
             HomeAssetContentHolder holder1 = (HomeAssetContentHolder) holder;
+            holder1.mRl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick (View v) {
+                    if (mListener != null){
+                        mListener.onItemClick(position -1);
+                    }
+                }
+            });
         }
     }
 
@@ -107,6 +134,8 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
         TextView mTvItemCount;
         @BindView(R.id.tv_home_asset_item_money)
         TextView mTvItemMoney;
+        @BindView(R.id.rl_home_asset_item)
+        RelativeLayout mRl;
 
         public HomeAssetContentHolder (View itemView) {
             super(itemView);
@@ -119,6 +148,6 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
         public void onSendClick();
         public void onReciveClick ();
         public void onScanClick();
-        public void onItemClick();
+        public void onItemClick(int position);
     }
 }
