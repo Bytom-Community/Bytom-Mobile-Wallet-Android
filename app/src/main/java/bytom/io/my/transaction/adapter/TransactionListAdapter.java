@@ -30,9 +30,12 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
     private ArrayList<TransListGroupEntity> mGroupList;
     private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
 
-    public TransactionListAdapter(Context context, ArrayList<TransListGroupEntity> groupList,
-                                  ArrayList<ArrayList<TransListItemEntity>> childList) {
+    public TransactionListAdapter(Context context) {
         mContext = context;
+    }
+
+    public void setData(ArrayList<TransListGroupEntity> groupList,
+                        ArrayList<ArrayList<TransListItemEntity>> childList) {
         mGroupList = groupList;
         mChildGroupList = childList;
     }
@@ -110,18 +113,19 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
             childHolder = new ViewHolderChild();
             childHolder.childLayout = (RelativeLayout) convertView.findViewById(R.id.rl_layout);
             childHolder.addrview = (TextView) convertView.findViewById(R.id.tv_addr);
-            childHolder.classifyView = (TextView) convertView.findViewById(R.id.tv_num);
+            childHolder.numView = (TextView) convertView.findViewById(R.id.tv_num);
             childHolder.timeView = (TextView) convertView.findViewById(R.id.tv_time);
             childHolder.statusView = (TextView) convertView.findViewById(R.id.tv_status);
             convertView.setTag(childHolder);
         } else {
             childHolder = (ViewHolderChild)convertView.getTag();
         }
-        if(null != mChildGroupList.get(i)) {
-            childHolder.addrview.setText(mChildGroupList.get(i).get(i).getAddr());
-            childHolder.classifyView.setText(mChildGroupList.get(i).get(i).getClassify());
-            childHolder.timeView.setText(mChildGroupList.get(i).get(i).getTime());
-            childHolder.statusView.setText(mChildGroupList.get(i).get(i).getNum());
+
+        if(null != mChildGroupList.get(i) && null != mChildGroupList.get(i).get(i1)) {
+            childHolder.addrview.setText(mChildGroupList.get(i).get(i1).getAddr());
+            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getClassify());
+            childHolder.timeView.setText(mChildGroupList.get(i).get(i1).getTime());
+            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getNum());
             childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -154,7 +158,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
         private RelativeLayout childLayout;
         private ImageView iconView;
         private TextView addrview;
-        private TextView classifyView;
+        private TextView numView;
         private TextView timeView;
         private TextView statusView;
     }

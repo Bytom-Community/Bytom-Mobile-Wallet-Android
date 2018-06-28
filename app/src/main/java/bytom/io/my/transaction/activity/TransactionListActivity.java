@@ -6,12 +6,30 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import bytom.io.R;
+import bytom.io.common.VolleyWrapper;
+import bytom.io.constant.HttpUrls;
 import bytom.io.entity.transaction.TransListGroupEntity;
 import bytom.io.entity.transaction.TransListItemEntity;
+import bytom.io.entity.transaction.TransactionListEntity;
+import bytom.io.entity.transaction.TransactionsEntity;
 import bytom.io.my.transaction.adapter.TransactionListAdapter;
 
 /**
@@ -21,7 +39,7 @@ import bytom.io.my.transaction.adapter.TransactionListAdapter;
  */
 
 
-public class TransactionListActivity extends Activity{
+public class TransactionListActivity extends Activity {
 
     private ExpandableListView mExpandableListView;
     private TransactionListAdapter mAdapter;
@@ -37,21 +55,68 @@ public class TransactionListActivity extends Activity{
         initData();
 
         init();
+
+        onRequestData();
     }
 
     private void init() {
-
-        ((TextView)findViewById(R.id.tv_title)).setText(getString(R.string.trans_record));
+        ((TextView) findViewById(R.id.tv_title)).setText(getString(R.string.trans_record));
         findViewById(R.id.iv_left).setOnClickListener(listener);
         mExpandableListView = findViewById(R.id.exlistview);
         int width = getWindowManager().getDefaultDisplay().getWidth();
-        mExpandableListView.setIndicatorBounds(width-40, width-10);
-        mAdapter = new TransactionListAdapter(this, mGroupList, mChildGroupList);
+        mExpandableListView.setIndicatorBounds(width - 40, width - 10);
+        mAdapter = new TransactionListAdapter(this);
         mExpandableListView.setAdapter(mAdapter);
     }
 
-    private void initData() {
+    private void onRequestData() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("address", "bm1q5p9d4gelfm4cc3zq3slj7vh2njx23ma2cf866j");
+        params.put("assetID", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        JsonRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, HttpUrls.URL_TRANSACTIONS_LIST, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        TransactionsEntity entity = new Gson().fromJson(response.toString(), TransactionsEntity.class);
+                        generateData(entity);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (null != error)
+                    Toast.makeText(TransactionListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
+    }
+
+    private void generateData(TransactionsEntity entity) {
+        if(null == entity) return;
+        if(null == entity.getTransactions()) return;
+
+        ArrayList<TransactionListEntity> list = entity.getTransactions();
         mGroupList = new ArrayList<>();
+        for (int i =0; i< list.size(); i++) {
+            TransListGroupEntity groupEntity = new TransListGroupEntity();
+            if(null == list.get(i)) break;
+            groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
+
+            mChildGroupList = new ArrayList<>();
+        }
+
+
+
+        mAdapter.setData(mGroupList, mChildGroupList);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private String generateYearMonth(long time) {
+       return new SimpleDateFormat("yyyy-MM-dd",
+               Locale.ENGLISH).format(time);
+    }
+
+    private void initData() {
+
         TransListGroupEntity groupEntity = new TransListGroupEntity();
         groupEntity.setTime("2018年6月");
         mGroupList.add(groupEntity);
@@ -68,7 +133,7 @@ public class TransactionListActivity extends Activity{
         itemEntity.setClassify("Bytom");
         itemEntity.setTime("2018-06-01 12:00");
         itemEntity.setNum("-1000.0BTM");
-         mItemList.add(itemEntity);
+        mItemList.add(itemEntity);
         itemEntity = new TransListItemEntity();
         itemEntity.setAddr("JJKOOLLL<JNFYFTDDRDHGJKGJUFJFGYFGHYFGGHYGTYFYUF");
         itemEntity.setClassify("Bytom");
@@ -130,7 +195,7 @@ public class TransactionListActivity extends Activity{
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-             finish();
+            finish();
         }
     };
 }
