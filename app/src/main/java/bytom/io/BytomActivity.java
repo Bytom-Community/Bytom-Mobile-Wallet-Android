@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import bytom.io.activity.CurrencyActivity;
+import bytom.io.activity.SiteActivity;
 import bytom.io.activity.WalletListActivity;
 import bytom.io.assetmanage.AssetManagementActivity;
 import bytom.io.home.HomeActivity;
@@ -48,7 +50,7 @@ public class BytomActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.bt_about).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_about).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
                 Intent intent = new Intent(BytomActivity.this, AboutActivity.class);
@@ -59,6 +61,22 @@ public class BytomActivity extends AppCompatActivity {
             @Override
             public void onClick (View v) {
                 Intent intent = new Intent(BytomActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btn_currency).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                Intent intent = new Intent(BytomActivity.this, CurrencyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btn_site).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                Intent intent = new Intent(BytomActivity.this, SiteActivity.class);
                 startActivity(intent);
             }
         });

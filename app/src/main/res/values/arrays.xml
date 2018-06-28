@@ -5,4 +5,9 @@
         <item>@string/change_password</item>
         <item>@string/backup_wallet</item>
     </string-array>
+    <string-array name="currency">
+        <item>@string/currency_usdt</item>
+        <item>@string/currency_cny</item>
+        <item>@string/currency_btc</item>
+    </string-array>
 </resources>
