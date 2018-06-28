@@ -52,8 +52,6 @@ public class TransactionListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_transaction_list);
 
-        initData();
-
         init();
 
         onRequestData();
@@ -105,7 +103,7 @@ public class TransactionListActivity extends Activity {
         }
 
 
-
+        initData();
         mAdapter.setData(mGroupList, mChildGroupList);
         mAdapter.notifyDataSetChanged();
     }
@@ -116,7 +114,7 @@ public class TransactionListActivity extends Activity {
     }
 
     private void initData() {
-
+        mGroupList = new ArrayList<>();
         TransListGroupEntity groupEntity = new TransListGroupEntity();
         groupEntity.setTime("2018年6月");
         mGroupList.add(groupEntity);
