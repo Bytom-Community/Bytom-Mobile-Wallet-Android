@@ -46,14 +46,13 @@
     </LinearLayout>
     <Button
         android:id="@+id/private_copy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="80dp"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
         android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/private_copy"
         android:textSize="12dp"
         android:textColor="@color/C10C2AE"
-        android:background="@drawable/buttom_style"/>
+        android:background="@drawable/button_style"/>
 
 </LinearLayout>

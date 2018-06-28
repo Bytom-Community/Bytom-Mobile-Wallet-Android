@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl_home_asset_item"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="70dp">
 
     <ImageView
         android:id="@+id/iv_home_asset_icon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
         android:src="@mipmap/ic_launcher"/>
@@ -16,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="55dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="15sp"
+        android:textColor="@color/C1D2128"
         android:text="BTM"/>
 
     <TextView
@@ -24,8 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/C1D2128"
+        android:textSize="15sp"
         android:text="1000.5"/>
 
     <TextView
@@ -33,9 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="55dp"
-        android:layout_below="@+id/tv_home_asset_item_count"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginRight="21dp"
+        android:textSize="12sp"
+        android:textColor="@color/CCED1D9"
         android:text="￥4500"/>
 
 </RelativeLayout>

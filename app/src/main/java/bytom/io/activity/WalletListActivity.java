@@ -70,7 +70,7 @@ public class WalletListActivity extends Activity {
             super(context,ResId,new Object[10]);
             mResId = ResId;
         }
-        //TODO List view is hiden by bottom button
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = LayoutInflater.from(getContext()).inflate(mResId,null);

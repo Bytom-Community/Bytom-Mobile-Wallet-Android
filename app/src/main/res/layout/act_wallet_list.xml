@@ -19,10 +19,12 @@
         <ListView
             android:id="@+id/wallet_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttom_button">
         </ListView>
 
         <LinearLayout
+            android:id="@+id/buttom_button"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
