@@ -6,19 +6,28 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import bytom.io.R;
+import bytom.io.common.GsonRequest;
+import bytom.io.common.UrlConfig;
+import bytom.io.common.VolleyWrapper;
 import bytom.io.home.adapter.HomeAssetAdapter;
+import bytom.io.home.bean.HomeAssetsBean;
 
 /**
  * Created by DongFangZhou on 2018/6/21.
@@ -29,6 +38,7 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
     RecyclerView mRv;
     Unbinder unbinder;
     private OnMenuClickListener mMenuListener;
+    private HomeAssetAdapter mAdapter;
 
     public void setMenuListener(OnMenuClickListener listener) {
         this.mMenuListener = listener;
@@ -52,15 +62,37 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init();
+        initData();
+    }
+
+    private void initData () {
+        Map<String,String> map= new HashMap<>();
+        map.put("address","bm1qsk6dj6pym7yng0ev7wne7tm3d54ea2sjz5tyxk");
+        GsonRequest jsonRequest = new GsonRequest(UrlConfig.assetsList(map), HomeAssetsBean.class, null,
+                new Response.Listener<HomeAssetsBean>() {
+                    @Override
+                    public void onResponse(HomeAssetsBean response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("http", "onResponse: "+response);
+                        showList(response.getAssets());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("http", "error: "+error);
+            }
+        });
+        VolleyWrapper.getInstance(getContext()).addToRequestQueue(jsonRequest);
+    }
+
+    private void showList (List<HomeAssetsBean.AssetsBean> list) {
+        mRv.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAdapter = new HomeAssetAdapter(getContext(), list, this);
+        mRv.setAdapter(mAdapter);
     }
 
     private void init() {
-        mRv.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            list.add(i);
-        }
-        mRv.setAdapter(new HomeAssetAdapter(getContext(), list, this));
+
     }
 
     @Override

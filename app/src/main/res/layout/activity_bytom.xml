@@ -34,14 +34,26 @@
         android:text="@string/wallet"/>
 
     <Button
-        android:id="@+id/bt_about"
+        android:id="@+id/btn_about"
         style="@style/layout_match_wrap"
         app:layout_constraintTop_toBottomOf="@id/bt_wallet"
         android:text="@string/about"/>
     <Button
         android:id="@+id/bt_home"
         style="@style/layout_match_wrap"
-        app:layout_constraintTop_toBottomOf="@id/bt_about"
+        app:layout_constraintTop_toBottomOf="@id/btn_about"
         android:text="@string/home"/>
+
+    <Button
+        android:id="@+id/btn_currency"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/bt_home"
+        android:text="@string/currency"/>
+
+    <Button
+        android:id="@+id/btn_site"
+        style="@style/layout_match_wrap"
+        app:layout_constraintTop_toBottomOf="@id/btn_currency"
+        android:text="@string/site"/>
 
 </android.support.constraint.ConstraintLayout>

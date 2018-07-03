@@ -55,5 +55,15 @@
     <string name="private_copy">复制</string>
     <string name="sec_warn_hint">请确认四周无人及无任何摄像设备，忽用截图或拍照的方式保存钱包文件，切勿将钱包文件保存至邮箱，记录本，网盘，聊天工具等，非常危险</string>
     <string name="backup_wallet">备份钱包</string>
+    <string name="currency">货币</string>
+    <string name="currency_cny">人民币 - CNY</string>
+    <string name="currency_usdt">美元 - USDT</string>
+    <string name="currency_btc">比特币 - BTC</string>
+    <string name="save">保存</string>
+    <string name="site">节点</string>
+    <string name="wallet_site">钱包节点URL</string>
+    <string name="www_bytom_io">w3.bytom.io</string>
+    <string name="default_site">默认节点</string>
+    <string name="submit">提交</string>
 
 </resources>

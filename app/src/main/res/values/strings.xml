@@ -103,6 +103,21 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="backup_wallet">备份钱包</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="currency">currency</string>
+    <string name="currency_cny">RMB - CNY</string>
+    <string name="currency_usdt">dollar - USDT</string>
+    <string name="currency_btc">bitcoin - BTC</string>
+    <string name="save">save</string>
+    <string name="title_activity_site">SiteActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="site">site</string>
+    <string name="wallet_site">wallet site url</string>
+    <string name="www_bytom_io">w3.bytom.io</string>
+    <string name="default_site">default site</string>
+    <string name="submit">submit</string>
+
     <!-->
     english for wallet
     <string name="create_wallet">Create Wallet</string>

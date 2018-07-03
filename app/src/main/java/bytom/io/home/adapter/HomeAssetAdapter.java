@@ -10,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
+import bytom.io.common.AssetsMaps;
+import bytom.io.home.bean.HomeAssetsBean;
 
 /**
  * Created by DongFangZhou on 2018/6/22.
@@ -24,8 +28,9 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     private static final int TYPE_TOP = 0;
     private static final int TYPE_CONTENT = 1;
     private final Context mContext;
-    private final List mList;
+    private final List<HomeAssetsBean.AssetsBean> mList;
     private final OnAssetClickListener mListener;
+    private DecimalFormat df = new DecimalFormat("###.####");
 
     @NonNull
     @Override
@@ -80,6 +85,11 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
                     }
                 }
             });
+            HomeAssetsBean.AssetsBean bean = mList.get(position - 1);
+            holder1.mIvIcon.setImageResource(AssetsMaps.getAssetsIcon(bean.getAssetID()));
+            float amount = Float.parseFloat(bean.getAmount()) / 100000000;
+            holder1.mTvItemCount.setText(df.format(amount));
+            holder1.mTvName.setText(AssetsMaps.getAssetsName(bean.getAssetID()));
         }
     }
 
@@ -97,9 +107,13 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
         return mList.size() + 1;
     }
 
-    public HomeAssetAdapter (Context context, List list,OnAssetClickListener listener) {
+    public HomeAssetAdapter (Context context, List<HomeAssetsBean.AssetsBean> list, OnAssetClickListener listener) {
         this.mContext = context;
-        this.mList = list;
+        if (list != null){
+            this.mList = list;
+        }else{
+            mList = new ArrayList();
+        }
         this.mListener = listener;
     }
 
