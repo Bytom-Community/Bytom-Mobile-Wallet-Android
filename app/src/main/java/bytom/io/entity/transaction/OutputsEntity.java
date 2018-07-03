@@ -10,7 +10,7 @@ package bytom.io.entity.transaction;
 public class OutputsEntity {
     private String type;
     private String assetID;
-    private String amount;
+    private long amount;
     private String address;
     private String OutputID;
 
@@ -30,11 +30,11 @@ public class OutputsEntity {
         this.assetID = assetID;
     }
 
-    public String getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 

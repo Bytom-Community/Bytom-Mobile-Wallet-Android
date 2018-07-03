@@ -1,5 +1,7 @@
 package bytom.io.entity.transaction;
 
+import java.io.Serializable;
+
 /**
  * <b>版权</b>：　　　比原链 版权所有(c) 2018 <br>
  * <b>作者</b>：　　　愤世嫉俗
@@ -8,20 +10,17 @@ package bytom.io.entity.transaction;
 
 
 
-public class TransListItemEntity {
-    private String icon;
+public class TransListItemEntity implements Serializable{
     private String addr;
-    private String classify;
     private String time;
-    private String num;
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
+    private long num;
+    private boolean isInput;
+    private String status;
+    private String sendAddr;
+    private String receiveAddr;
+    private String fee;
+    private String ps;
+    private String transNum;
 
     public String getAddr() {
         return addr;
@@ -29,14 +28,6 @@ public class TransListItemEntity {
 
     public void setAddr(String addr) {
         this.addr = addr;
-    }
-
-    public String getClassify() {
-        return classify;
-    }
-
-    public void setClassify(String classify) {
-        this.classify = classify;
     }
 
     public String getTime() {
@@ -47,11 +38,67 @@ public class TransListItemEntity {
         this.time = time;
     }
 
-    public String getNum() {
+    public long getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(long num) {
         this.num = num;
+    }
+
+    public boolean isInput() {
+        return isInput;
+    }
+
+    public void setInput(boolean input) {
+        isInput = input;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSendAddr() {
+        return sendAddr;
+    }
+
+    public void setSendAddr(String sendAddr) {
+        this.sendAddr = sendAddr;
+    }
+
+    public String getReceiveAddr() {
+        return receiveAddr;
+    }
+
+    public void setReceiveAddr(String receiveAddr) {
+        this.receiveAddr = receiveAddr;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getPs() {
+        return ps;
+    }
+
+    public void setPs(String ps) {
+        this.ps = ps;
+    }
+
+    public String getTransNum() {
+        return transNum;
+    }
+
+    public void setTransNum(String transNum) {
+        this.transNum = transNum;
     }
 }

@@ -35,6 +35,9 @@
 
 
     <string name="trans_record">交易记录</string>
+    <string name="trans_req_data_failed">数据请求失败</string>
+    <string name="trans_success">交易成功</string>
+    <string name="trans_failed">交易失败</string>
     <string name="trans_detail">交易详情</string>
     <string name="trans_detail_status">交易状态</string>
     <string name="trans_detail_send">发送方&#160;&#160;&#160;&#160;</string>

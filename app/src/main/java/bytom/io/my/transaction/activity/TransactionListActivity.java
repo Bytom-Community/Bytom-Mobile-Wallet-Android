@@ -1,8 +1,11 @@
 package bytom.io.my.transaction.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ import java.util.Map;
 import bytom.io.R;
 import bytom.io.common.VolleyWrapper;
 import bytom.io.constant.HttpUrls;
+import bytom.io.entity.transaction.OutputsEntity;
 import bytom.io.entity.transaction.TransListGroupEntity;
 import bytom.io.entity.transaction.TransListItemEntity;
 import bytom.io.entity.transaction.TransactionListEntity;
@@ -46,6 +50,9 @@ public class TransactionListActivity extends Activity {
     private ArrayList<TransListGroupEntity> mGroupList;
     private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
     private ArrayList<TransListItemEntity> mItemList;
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM",
+            Locale.ENGLISH);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +75,8 @@ public class TransactionListActivity extends Activity {
     }
 
     private void onRequestData() {
+        final ProgressDialog dialog = ProgressDialog.show(TransactionListActivity.this, "", "数据请求中", true, true);
+        dialog.show();
         Map<String, String> params = new HashMap<String, String>();
         params.put("address", "bm1q5p9d4gelfm4cc3zq3slj7vh2njx23ma2cf866j");
         params.put("assetID", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -75,119 +84,111 @@ public class TransactionListActivity extends Activity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.e("=====", " ==" + response.toString());
+                        dialog.dismiss();
                         TransactionsEntity entity = new Gson().fromJson(response.toString(), TransactionsEntity.class);
                         generateData(entity);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (null != error)
+                dialog.dismiss();
+                if (null != error && !TextUtils.isEmpty(error.getMessage()))
                     Toast.makeText(TransactionListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(TransactionListActivity.this, getString(R.string.trans_req_data_failed), Toast.LENGTH_SHORT).show();
             }
         });
         VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
     private void generateData(TransactionsEntity entity) {
-        if(null == entity) return;
-        if(null == entity.getTransactions()) return;
+        if (null == entity) return;
+        if (null == entity.getTransactions()) return;
 
         ArrayList<TransactionListEntity> list = entity.getTransactions();
         mGroupList = new ArrayList<>();
-        for (int i =0; i< list.size(); i++) {
+        mChildGroupList = new ArrayList<>();
+        long tempTime = 0L;
+        for (int i = 0; i < list.size(); i++) {
             TransListGroupEntity groupEntity = new TransListGroupEntity();
-            if(null == list.get(i)) break;
-            groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
+            if (null == list.get(i)) break;
+            if (tempTime != 0) {
+                if(!isSameDate(tempTime, list.get(i).getTimestamp())) {
+                    if(null != mItemList && mItemList.size() > 0) {
+                        mChildGroupList.add(mItemList);
+                    }
+                    mItemList = new ArrayList<>();
+                    groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
+                    mGroupList.add(groupEntity);
+                }else {
+                    generateChildItemData(list.get(i), mItemList);
+                }
 
-            mChildGroupList = new ArrayList<>();
+             } else {
+                groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
+                mGroupList.add(groupEntity);
+                mItemList = new ArrayList<>();
+                generateChildItemData(list.get(i), mItemList);
+            }
+
+            tempTime = list.get(i).getTimestamp();
+
         }
-
-
-        initData();
+        if(null != mItemList && mItemList.size() > 0) {
+            mChildGroupList.add(mItemList);
+        }
         mAdapter.setData(mGroupList, mChildGroupList);
         mAdapter.notifyDataSetChanged();
     }
 
-    private String generateYearMonth(long time) {
-       return new SimpleDateFormat("yyyy-MM-dd",
-               Locale.ENGLISH).format(time);
+    private void generateChildItemData(TransactionListEntity entity, ArrayList<TransListItemEntity> tempList) {
+        TransListItemEntity itemEntity = new TransListItemEntity();
+        ArrayList<OutputsEntity> outputsList = entity.getOutputs();
+        if(null != outputsList && outputsList.size() > 0 && null != outputsList.get(0))
+            itemEntity.setAddr(outputsList.get(0).getAddress());
+
+        itemEntity.setTime(generateYearMonthDay(entity.getTimestamp()));
+        if(entity.getConfirmation() > 6)
+            itemEntity.setStatus(getString(R.string.trans_success));
+        else
+            itemEntity.setStatus(getString(R.string.trans_failed));
+        if(null != outputsList) {
+            long mount = 0L;
+            for (int j = 0; j < outputsList.size(); j++) {
+                if (null == outputsList.get(j)) break;
+                mount = mount + outputsList.get(j).getAmount();
+            }
+            itemEntity.setNum(mount);
+        }
+
+        itemEntity.setSendAddr("");
+        itemEntity.setReceiveAddr("");
+        itemEntity.setFee("");
+        itemEntity.setPs("");
+        itemEntity.setTransNum("");
+
+        tempList.add(itemEntity);
     }
 
-    private void initData() {
-        mGroupList = new ArrayList<>();
-        TransListGroupEntity groupEntity = new TransListGroupEntity();
-        groupEntity.setTime("2018年6月");
-        mGroupList.add(groupEntity);
-        groupEntity = new TransListGroupEntity();
-        groupEntity.setTime("2018年5月");
-        mGroupList.add(groupEntity);
-        groupEntity.setTime("2018年4月");
-        mGroupList.add(groupEntity);
+    private boolean isSameDate(long timeStamp1, long timeStamp2) {
+        String time1 = generateYearMonth(timeStamp1);
+        String time2 = generateYearMonth(timeStamp2);
+        if (TextUtils.isEmpty(time1) || TextUtils.isEmpty(time2))
+            return false;
+        if (time1.equals(time2))
+            return true;
+        return false;
+    }
 
-        mChildGroupList = new ArrayList<>();
-        mItemList = new ArrayList<>();
-        TransListItemEntity itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("BMASDGDGHDSHSDHDFHKKKFGFFGHDFGHFHFHJFYFJFHFHJFHJFUYFH");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-01 12:00");
-        itemEntity.setNum("-1000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("JJKOOLLL<JNFYFTDDRDHGJKGJUFJFGYFGHYFGGHYGTYFYUF");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-02 12:00");
-        itemEntity.setNum("-5000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("KLKHUHIUGHJBFGDGJ");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-03 12:00");
-        itemEntity.setNum("-6000.0BTM");
-        mItemList.add(itemEntity);
-        mChildGroupList.add(mItemList);
+    private String generateYearMonth(long time) {
+        String result = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH).format(time*1000);
+        return result;
+    }
 
-
-        mItemList = new ArrayList<>();
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("BMASDGDGHDSHSDHDFHFH");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-01 12:00");
-        itemEntity.setNum("-1000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("JJKOOLLL<JNGHYGTYFYUF");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-02 12:00");
-        itemEntity.setNum("-5000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("KLKHUHIUGHJBFGDGJ");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-03 12:00");
-        itemEntity.setNum("-6000.0BTM");
-        mItemList.add(itemEntity);
-        mChildGroupList.add(mItemList);
-
-        mItemList = new ArrayList<>();
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("BMASDGDGHDSHSDHDFHFH");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-01 12:00");
-        itemEntity.setNum("-1000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("JJKOOLLL<JNGHYGTYFYUF");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-02 12:00");
-        itemEntity.setNum("-5000.0BTM");
-        mItemList.add(itemEntity);
-        itemEntity = new TransListItemEntity();
-        itemEntity.setAddr("KLKHUHIUGHJBFGDGJ");
-        itemEntity.setClassify("Bytom");
-        itemEntity.setTime("2018-06-03 12:00");
-        itemEntity.setNum("-6000.0BTM");
-        mItemList.add(itemEntity);
-        mChildGroupList.add(mItemList);
+    private String generateYearMonthDay(long time) {
+        return new SimpleDateFormat("yyyy-MM-DD HH:mm",
+                Locale.ENGLISH).format(time*1000);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {

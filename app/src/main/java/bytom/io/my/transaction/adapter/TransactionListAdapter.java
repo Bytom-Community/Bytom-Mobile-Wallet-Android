@@ -106,12 +106,14 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int i, int i1, boolean b, View convertView, ViewGroup viewGroup) {
+    public View getChildView(final int i, final int i1, boolean b, View convertView, ViewGroup viewGroup) {
         ViewHolderChild childHolder;
         if(null == convertView) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_trans_child, null);
             childHolder = new ViewHolderChild();
             childHolder.childLayout = (RelativeLayout) convertView.findViewById(R.id.rl_layout);
+            childHolder.lineView = (TextView) convertView.findViewById(R.id.tv_top_line);
+            childHolder.iconView = (ImageView) convertView.findViewById(R.id.iv_icon);
             childHolder.addrview = (TextView) convertView.findViewById(R.id.tv_addr);
             childHolder.numView = (TextView) convertView.findViewById(R.id.tv_num);
             childHolder.timeView = (TextView) convertView.findViewById(R.id.tv_time);
@@ -122,14 +124,23 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
         }
 
         if(null != mChildGroupList.get(i) && null != mChildGroupList.get(i).get(i1)) {
+            if(i1 == 0)
+                childHolder.lineView.setVisibility(View.VISIBLE);
+             else
+                childHolder.lineView.setVisibility(View.GONE);
+             if(mChildGroupList.get(i).get(i1).isInput())
+                 childHolder.iconView.setBackgroundResource(R.mipmap.arrow_down);
+             else
+                 childHolder.iconView.setBackgroundResource(R.mipmap.arrow_up);
             childHolder.addrview.setText(mChildGroupList.get(i).get(i1).getAddr());
-            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getClassify());
+            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getNum() + "");
             childHolder.timeView.setText(mChildGroupList.get(i).get(i1).getTime());
-            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getNum());
+            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getStatus());
             childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, TransactionDetailActivity.class);
+                    intent.putExtra("trans_detail", mChildGroupList.get(i).get(i1));
                     mContext.startActivity(intent);
                 }
             });
@@ -156,6 +167,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
 
     class ViewHolderChild{
         private RelativeLayout childLayout;
+        private TextView lineView;
         private ImageView iconView;
         private TextView addrview;
         private TextView numView;

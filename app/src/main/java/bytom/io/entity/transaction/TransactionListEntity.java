@@ -15,10 +15,10 @@ public class TransactionListEntity {
     private String blockID;
     private String blockHeight;
     private int blockTransactionsCount;
-    private String confirmation;
+    private long confirmation;
 
-    private ArrayList<InputsEntity> inputsList;
-    private ArrayList<OutputsEntity> outputsList;
+    private ArrayList<InputsEntity> inputs;
+    private ArrayList<OutputsEntity> outputs;
 
     public String getID() {
         return ID;
@@ -60,42 +60,28 @@ public class TransactionListEntity {
         this.blockTransactionsCount = blockTransactionsCount;
     }
 
-    public String getConfirmation() {
+    public long getConfirmation() {
         return confirmation;
     }
 
-    public void setConfirmation(String confirmation) {
+    public void setConfirmation(long confirmation) {
         this.confirmation = confirmation;
     }
 
-    public ArrayList<InputsEntity> getInputsList() {
-        return inputsList;
+    public ArrayList<InputsEntity> getInputs() {
+        return inputs;
     }
 
-    public void setInputsList(ArrayList<InputsEntity> inputsList) {
-        this.inputsList = inputsList;
+    public void setInputs(ArrayList<InputsEntity> inputs) {
+        this.inputs = inputs;
     }
 
-    public ArrayList<OutputsEntity> getOutputsList() {
-        return outputsList;
+    public ArrayList<OutputsEntity> getOutputs() {
+        return outputs;
     }
 
-    public void setOutputsList(ArrayList<OutputsEntity> outputsList) {
-        this.outputsList = outputsList;
-    }
-
-    @Override
-    public String toString() {
-        return "TransListGroupEntity{" +
-                ", ID='" + ID + '\'' +
-                ", timestamp='" + timestamp + '\'' +
-                ", blockID='" + blockID + '\'' +
-                ", blockHeight='" + blockHeight + '\'' +
-                ", blockTransactionsCount=" + blockTransactionsCount +
-                ", confirmation='" + confirmation + '\'' +
-                ", inputsList=" + inputsList +
-                ", outputsList=" + outputsList +
-                '}';
+    public void setOutputs(ArrayList<OutputsEntity> outputs) {
+        this.outputs = outputs;
     }
 
 }

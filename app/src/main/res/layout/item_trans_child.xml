@@ -3,20 +3,27 @@
     android:id="@+id/rl_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="15dp">
+    >
+    <TextView
+        android:id="@+id/tv_top_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/CF3F3F3"
+        android:layout_marginLeft="12dp"/>
 
     <ImageView
         android:id="@+id/iv_icon"
         style="@style/layout_wrap_wrap"
         android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
-        android:src="@mipmap/ic_launcher" />
+        android:background="@mipmap/arrow_up" />
 
     <LinearLayout
         android:id="@+id/ll_layout"
         style="@style/layout_match_wrap"
-        android:layout_alignBottom="@+id/iv_icon"
-        android:layout_alignTop="@+id/iv_icon"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="15dp"
@@ -48,6 +55,7 @@
 
         <RelativeLayout
             style="@style/layout_match_wrap"
+            android:layout_marginTop="10dp"
             android:layout_gravity="bottom"
             android:gravity="bottom">
 
@@ -75,6 +83,7 @@
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:background="@color/CF3F3F3"
-        android:paddingTop="15dp" />
+        android:paddingTop="15dp"
+        android:layout_marginLeft="12dp"/>
 
 </RelativeLayout>

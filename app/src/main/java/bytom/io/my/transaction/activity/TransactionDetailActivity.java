@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import bytom.io.R;
+import bytom.io.entity.transaction.TransListItemEntity;
 
 /**
  * <b>版权</b>：　　　比原链 版权所有(c) 2018 <br>
@@ -30,6 +31,8 @@ public class TransactionDetailActivity extends Activity {
     TextView mNumView;
     @BindView(R.id.tv_status)
     TextView mStatusView;
+    @BindView(R.id.tv_send)
+    TextView mSendView;
     @BindView(R.id.tv_receive)
     TextView mReceiveView;
     @BindView(R.id.tv_fee)
@@ -42,17 +45,33 @@ public class TransactionDetailActivity extends Activity {
     TextView mTimeView;
     private Unbinder unbinder;
 
+    private TransListItemEntity mEntity;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_transaction_detail);
-
+        mEntity = (TransListItemEntity) getIntent().getSerializableExtra("trans_detail");
         init();
+        showData(mEntity);
     }
 
     private void init() {
         unbinder = ButterKnife.bind(this);
         mTitleView.setText(getString(R.string.trans_detail));
+    }
+
+    private void showData(TransListItemEntity entity) {
+        if(null == mEntity) return;
+
+        mNumView.setText(entity.getNum() + "BTM");
+        mStatusView.setText(entity.getStatus());
+        mSendView.setText(entity.getSendAddr());
+        mReceiveView.setText(entity.getReceiveAddr());
+        mFeeView.setText(entity.getFee());
+        mPsView.setText(entity.getPs());
+        mTransNumView.setText(entity.getTransNum());
+        mTimeView.setText(entity.getTime());
     }
 
     @Override
