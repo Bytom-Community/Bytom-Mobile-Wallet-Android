@@ -13,7 +13,6 @@ import bytom.io.activity.SiteActivity;
 import bytom.io.activity.WalletListActivity;
 import bytom.io.assetmanage.AssetManagementActivity;
 import bytom.io.home.HomeActivity;
-import bytom.io.my.transaction.activity.TransactionListActivity;
 
 public class BytomActivity extends AppCompatActivity {
 
@@ -25,15 +24,6 @@ public class BytomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bytom);
         ButterKnife.bind(this);
-
-        findViewById(R.id.bt_test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View view) {
-                Intent intent = new Intent(BytomActivity.this, TransactionListActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
         findViewById(R.id.bt_asset_management).setOnClickListener(new View.OnClickListener() {
             @Override
