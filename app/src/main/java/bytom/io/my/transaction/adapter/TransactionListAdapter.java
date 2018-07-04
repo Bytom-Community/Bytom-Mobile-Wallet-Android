@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import bytom.io.R;
 import bytom.io.entity.transaction.TransListGroupEntity;
-import bytom.io.entity.transaction.TransListItemEntity;
 import bytom.io.my.transaction.activity.TransactionDetailActivity;
 
 /**
@@ -28,17 +27,11 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
 
     private Context mContext;
     private ArrayList<TransListGroupEntity> mGroupList;
-//    private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
 
     public TransactionListAdapter(Context context) {
         mContext = context;
     }
 
-    public void setData(ArrayList<TransListGroupEntity> groupList,
-                        ArrayList<ArrayList<TransListItemEntity>> childList) {
-        mGroupList = groupList;
-//        mChildGroupList = childList;
-    }
     public void setData(ArrayList<TransListGroupEntity> groupList) {
         mGroupList = groupList;
     }
@@ -53,8 +46,6 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int i) {
-//        if (null != mChildGroupList && i < mChildGroupList.size())
-//            return mChildGroupList.get(i).size();
         if(null != mGroupList && null != mGroupList.get(i) && null != mGroupList.get(i).getChildList()) {
            return mGroupList.get(i).getChildList().size();
         }
@@ -72,12 +63,6 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int i, int i1) {
-//        if (null != mChildGroupList && null != mChildGroupList.get(i) &&
-//                i < mChildGroupList.get(i).size()
-//                && null != mChildGroupList.get(i).get(i1))
-//            return mChildGroupList.get(i).get(i1);
-
-
         if(null != mGroupList && null != mGroupList.get(i) && null != mGroupList.get(i).getChildList()) {
             return mGroupList.get(i).getChildList().get(i1);
         }
@@ -139,36 +124,6 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
         } else {
             childHolder = (ViewHolderChild) convertView.getTag();
         }
-
-//        if (null != mChildGroupList.get(i) && null != mChildGroupList.get(i).get(i1)) {
-//            if (i1 == 0)
-//                childHolder.lineView.setVisibility(View.VISIBLE);
-//            else
-//                childHolder.lineView.setVisibility(View.GONE);
-//            if (mChildGroupList.get(i).get(i1).isInput()) {
-//                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_down);
-//                childHolder.numView.setText("+" + mChildGroupList.get(i).get(i1).getNum());
-//                Log.e("====num0===", childHolder.numView.getText().toString());
-//            } else {
-//                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_up);
-//                childHolder.numView.setText("-" + mChildGroupList.get(i).get(i1).getNum());
-//                Log.e("====num1===", childHolder.numView.getText().toString());
-//            }
-//
-//            childHolder.addrview.setText(mChildGroupList.get(i).get(i1).getAddr());
-//            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getNum() + "");
-//            childHolder.timeView.setText(mChildGroupList.get(i).get(i1).getTime());
-//            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getStatus());
-//            childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(mContext, TransactionDetailActivity.class);
-//                    intent.putExtra("trans_detail", mChildGroupList.get(i).get(i1));
-//                    mContext.startActivity(intent);
-//                }
-//            });
-//        }
-
 
         if (null != mGroupList.get(i) && null != mGroupList.get(i).getChildList().get(i1)) {
             if (i1 == 0)

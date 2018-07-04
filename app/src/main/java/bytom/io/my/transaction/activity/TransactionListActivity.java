@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -50,8 +49,6 @@ public class TransactionListActivity extends Activity {
     private ExpandableListView mExpandableListView;
     private TransactionListAdapter mAdapter;
     private ArrayList<TransListGroupEntity> mGroupList;
-    private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
-    private ArrayList<TransListItemEntity> mItemList;
     private String mAddress = "bm1q5p9d4gelfm4cc3zq3slj7vh2njx23ma2cf866j";
 
     @Override
@@ -89,7 +86,7 @@ public class TransactionListActivity extends Activity {
                         Log.e("=====", " ==" + response.toString());
                         dialog.dismiss();
                         TransactionsEntity entity = new Gson().fromJson(response.toString(), TransactionsEntity.class);
-                        generateData1(entity);
+                        generateData(entity);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -104,13 +101,13 @@ public class TransactionListActivity extends Activity {
         VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
-    private void generateData1(TransactionsEntity entity) {
+    private void generateData(TransactionsEntity entity) {
         if (null == entity) return;
         if (null == entity.getTransactions()) return;
 
         ArrayList<TransactionListEntity> list = entity.getTransactions();
+        if(null == list) return;
         mGroupList = new ArrayList<>();
-        mChildGroupList = new ArrayList<>();
         Log.e("===sze=====", "==size==" + list.size());
         for (int i = 0; i < list.size(); i++) {
             if (null == list.get(i)) break;
@@ -133,50 +130,6 @@ public class TransactionListActivity extends Activity {
         }
 
         mAdapter.setData(mGroupList);
-        mAdapter.notifyDataSetChanged();
-    }
-
-
-    private void generateData(TransactionsEntity entity) {
-        if (null == entity) return;
-        if (null == entity.getTransactions()) return;
-
-        ArrayList<TransactionListEntity> list = entity.getTransactions();
-        mGroupList = new ArrayList<>();
-        mChildGroupList = new ArrayList<>();
-        Log.e("===sze=====", "==size==" + list.size());
-        long tempTime = 0L;
-        for (int i = 0; i < list.size(); i++) {
-            TransListGroupEntity groupEntity = new TransListGroupEntity();
-            if (null == list.get(i)) break;
-            if (tempTime != 0) {
-                if (!isSameDate(tempTime, list.get(i).getTimestamp())) {
-                    if (null != mItemList && mItemList.size() > 0) {
-                        mChildGroupList.add(mItemList);
-                    }
-                    mItemList = new ArrayList<>();
-                    groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
-                    mGroupList.add(groupEntity);
-                    Log.e("===1=====", "==i==" + i);
-                } else {
-                    generateChildItemData(list.get(i), mItemList);
-                }
-
-            } else {
-                groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
-                mGroupList.add(groupEntity);
-                Log.e("===2=====", "==i==" + i);
-                mItemList = new ArrayList<>();
-                generateChildItemData(list.get(i), mItemList);
-            }
-
-            tempTime = list.get(i).getTimestamp();
-
-        }
-        if (null != mItemList && mItemList.size() > 0) {
-            mChildGroupList.add(mItemList);
-        }
-        mAdapter.setData(mGroupList, mChildGroupList);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -242,27 +195,13 @@ public class TransactionListActivity extends Activity {
         return false;
     }
 
-    private boolean isSameDate(long timeStamp1, long timeStamp2) {
-        String time1 = generateYearMonth(timeStamp1);
-        String time2 = generateYearMonth(timeStamp2);
-        if (TextUtils.isEmpty(time1) || TextUtils.isEmpty(time2))
-            return false;
-        if (time1.equals(time2))
-            return true;
-        return false;
-    }
-
     private String generateYearMonth(long time) {
-        String result = new SimpleDateFormat("yyyy-MM", Locale.CHINESE).format(time * 1000);
+        String result = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH).format(time * 1000);
         return result;
     }
 
     private String generateYearMonthDay(long time) {
-        String result;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date date = new Date(time*1000);
-        result = simpleDateFormat.format(date);
-        return result;
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH).format(time*1000);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
