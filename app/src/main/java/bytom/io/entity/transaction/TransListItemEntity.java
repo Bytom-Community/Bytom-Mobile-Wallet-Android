@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class TransListItemEntity implements Serializable{
     private String addr;
     private String time;
-    private long num;
+    private String num;
     private boolean isInput;
     private String status;
     private String sendAddr;
@@ -38,11 +38,11 @@ public class TransListItemEntity implements Serializable{
         this.time = time;
     }
 
-    public long getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(long num) {
+    public void setNum(String num) {
         this.num = num;
     }
 

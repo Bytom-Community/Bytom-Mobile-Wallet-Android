@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -29,6 +30,7 @@ import java.util.Map;
 import bytom.io.R;
 import bytom.io.common.VolleyWrapper;
 import bytom.io.constant.HttpUrls;
+import bytom.io.entity.transaction.InputsEntity;
 import bytom.io.entity.transaction.OutputsEntity;
 import bytom.io.entity.transaction.TransListGroupEntity;
 import bytom.io.entity.transaction.TransListItemEntity;
@@ -50,9 +52,7 @@ public class TransactionListActivity extends Activity {
     private ArrayList<TransListGroupEntity> mGroupList;
     private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
     private ArrayList<TransListItemEntity> mItemList;
-
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM",
-            Locale.ENGLISH);
+    private String mAddress = "bm1q5p9d4gelfm4cc3zq3slj7vh2njx23ma2cf866j";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +78,9 @@ public class TransactionListActivity extends Activity {
         final ProgressDialog dialog = ProgressDialog.show(TransactionListActivity.this, "", "数据请求中", true, true);
         dialog.show();
         Map<String, String> params = new HashMap<String, String>();
-        params.put("address", "bm1q5p9d4gelfm4cc3zq3slj7vh2njx23ma2cf866j");
+
+//        params.put("address", "bm1qv4709k0kv96xzfkycdlc20s94pah7gfyg2n47z");
+        params.put("address", mAddress);
         params.put("assetID", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         JsonRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, HttpUrls.URL_TRANSACTIONS_LIST, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -87,7 +89,7 @@ public class TransactionListActivity extends Activity {
                         Log.e("=====", " ==" + response.toString());
                         dialog.dismiss();
                         TransactionsEntity entity = new Gson().fromJson(response.toString(), TransactionsEntity.class);
-                        generateData(entity);
+                        generateData1(entity);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -102,6 +104,39 @@ public class TransactionListActivity extends Activity {
         VolleyWrapper.getInstance(this).addToRequestQueue(jsonRequest);
     }
 
+    private void generateData1(TransactionsEntity entity) {
+        if (null == entity) return;
+        if (null == entity.getTransactions()) return;
+
+        ArrayList<TransactionListEntity> list = entity.getTransactions();
+        mGroupList = new ArrayList<>();
+        mChildGroupList = new ArrayList<>();
+        Log.e("===sze=====", "==size==" + list.size());
+        for (int i = 0; i < list.size(); i++) {
+            if (null == list.get(i)) break;
+            if (!isSameDate(mGroupList, list.get(i).getTimestamp())) {
+                TransListGroupEntity groupEntity = new TransListGroupEntity();
+                groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
+                mGroupList.add(groupEntity);
+            }
+        }
+
+        for (int j = 0; j < mGroupList.size(); j++) {
+            TransListGroupEntity groupEntity = mGroupList.get(j);
+            ArrayList<TransListItemEntity> childList = new ArrayList<>();
+            for (int k = 0; k < list.size(); k++) {
+                if (mGroupList.get(j).getTime().equals(generateYearMonth(list.get(k).getTimestamp()))) {
+                    generateChildItemData(list.get(k), childList);
+                }
+            }
+            groupEntity.setChildList(childList);
+        }
+
+        mAdapter.setData(mGroupList);
+        mAdapter.notifyDataSetChanged();
+    }
+
+
     private void generateData(TransactionsEntity entity) {
         if (null == entity) return;
         if (null == entity.getTransactions()) return;
@@ -109,25 +144,28 @@ public class TransactionListActivity extends Activity {
         ArrayList<TransactionListEntity> list = entity.getTransactions();
         mGroupList = new ArrayList<>();
         mChildGroupList = new ArrayList<>();
+        Log.e("===sze=====", "==size==" + list.size());
         long tempTime = 0L;
         for (int i = 0; i < list.size(); i++) {
             TransListGroupEntity groupEntity = new TransListGroupEntity();
             if (null == list.get(i)) break;
             if (tempTime != 0) {
-                if(!isSameDate(tempTime, list.get(i).getTimestamp())) {
-                    if(null != mItemList && mItemList.size() > 0) {
+                if (!isSameDate(tempTime, list.get(i).getTimestamp())) {
+                    if (null != mItemList && mItemList.size() > 0) {
                         mChildGroupList.add(mItemList);
                     }
                     mItemList = new ArrayList<>();
                     groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
                     mGroupList.add(groupEntity);
-                }else {
+                    Log.e("===1=====", "==i==" + i);
+                } else {
                     generateChildItemData(list.get(i), mItemList);
                 }
 
-             } else {
+            } else {
                 groupEntity.setTime(generateYearMonth(list.get(i).getTimestamp()));
                 mGroupList.add(groupEntity);
+                Log.e("===2=====", "==i==" + i);
                 mItemList = new ArrayList<>();
                 generateChildItemData(list.get(i), mItemList);
             }
@@ -135,7 +173,7 @@ public class TransactionListActivity extends Activity {
             tempTime = list.get(i).getTimestamp();
 
         }
-        if(null != mItemList && mItemList.size() > 0) {
+        if (null != mItemList && mItemList.size() > 0) {
             mChildGroupList.add(mItemList);
         }
         mAdapter.setData(mGroupList, mChildGroupList);
@@ -145,30 +183,63 @@ public class TransactionListActivity extends Activity {
     private void generateChildItemData(TransactionListEntity entity, ArrayList<TransListItemEntity> tempList) {
         TransListItemEntity itemEntity = new TransListItemEntity();
         ArrayList<OutputsEntity> outputsList = entity.getOutputs();
-        if(null != outputsList && outputsList.size() > 0 && null != outputsList.get(0))
-            itemEntity.setAddr(outputsList.get(0).getAddress());
+        ArrayList<InputsEntity> inputsList = entity.getInputs();
 
         itemEntity.setTime(generateYearMonthDay(entity.getTimestamp()));
-        if(entity.getConfirmation() > 6)
+        if (entity.getConfirmation() > 6)
             itemEntity.setStatus(getString(R.string.trans_success));
         else
             itemEntity.setStatus(getString(R.string.trans_failed));
-        if(null != outputsList) {
+        if (null != outputsList) {
             long mount = 0L;
             for (int j = 0; j < outputsList.size(); j++) {
                 if (null == outputsList.get(j)) break;
                 mount = mount + outputsList.get(j).getAmount();
             }
-            itemEntity.setNum(mount);
-        }
+//            double num = mount/ Math.pow(Math.E, 8);
 
-        itemEntity.setSendAddr("");
-        itemEntity.setReceiveAddr("");
-        itemEntity.setFee("");
-        itemEntity.setPs("");
-        itemEntity.setTransNum("");
+            if ("send".equals(entity.getOp())) {
+                itemEntity.setNum("-" + mount);
+            } else if ("receive".equals(entity.getOp())) {
+                itemEntity.setNum("+" + mount);
+            }
+        }
+        if ("send".equals(entity.getOp())) {
+            if (null != outputsList && outputsList.size() > 1 && null != outputsList.get(1)
+                    && !TextUtils.isEmpty(outputsList.get(1).getAddress())) {
+                itemEntity.setAddr(outputsList.get(1).getAddress());
+            } else if (null != outputsList && outputsList.size() > 0 && null != outputsList.get(0)
+                    ) {
+                itemEntity.setAddr(outputsList.get(0).getAddress());
+            }
+
+            itemEntity.setInput(false);
+            itemEntity.setSendAddr(mAddress);
+            itemEntity.setReceiveAddr(itemEntity.getAddr());
+
+        } else if ("receive".equals(entity.getOp())) {
+            if (null != inputsList && inputsList.size() > 0) {
+                itemEntity.setAddr(inputsList.get(0).getAddress());
+            }
+            itemEntity.setInput(true);
+            itemEntity.setSendAddr(itemEntity.getAddr());
+            itemEntity.setReceiveAddr(mAddress);
+        }
+        itemEntity.setFee(entity.getFee());
+        itemEntity.setTransNum(entity.getID());
 
         tempList.add(itemEntity);
+    }
+
+    private boolean isSameDate(ArrayList<TransListGroupEntity> list, long time) {
+        if (null == list || list.size() == 0) return false;
+        String timeStr = generateYearMonth(time);
+        for (int i = 0; i < list.size(); i++) {
+            if (timeStr.equals(list.get(i).getTime())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isSameDate(long timeStamp1, long timeStamp2) {
@@ -182,13 +253,16 @@ public class TransactionListActivity extends Activity {
     }
 
     private String generateYearMonth(long time) {
-        String result = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH).format(time*1000);
+        String result = new SimpleDateFormat("yyyy-MM", Locale.CHINESE).format(time * 1000);
         return result;
     }
 
     private String generateYearMonthDay(long time) {
-        return new SimpleDateFormat("yyyy-MM-DD HH:mm",
-                Locale.ENGLISH).format(time*1000);
+        String result;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date date = new Date(time*1000);
+        result = simpleDateFormat.format(date);
+        return result;
     }
 
     View.OnClickListener listener = new View.OnClickListener() {

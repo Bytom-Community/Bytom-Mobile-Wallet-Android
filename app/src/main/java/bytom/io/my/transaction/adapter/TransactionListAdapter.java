@@ -28,7 +28,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
 
     private Context mContext;
     private ArrayList<TransListGroupEntity> mGroupList;
-    private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
+//    private ArrayList<ArrayList<TransListItemEntity>> mChildGroupList;
 
     public TransactionListAdapter(Context context) {
         mContext = context;
@@ -37,34 +37,51 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
     public void setData(ArrayList<TransListGroupEntity> groupList,
                         ArrayList<ArrayList<TransListItemEntity>> childList) {
         mGroupList = groupList;
-        mChildGroupList = childList;
+//        mChildGroupList = childList;
     }
+    public void setData(ArrayList<TransListGroupEntity> groupList) {
+        mGroupList = groupList;
+    }
+
 
     @Override
     public int getGroupCount() {
-        if(null != mGroupList)
+        if (null != mGroupList)
             return mGroupList.size();
         return 0;
     }
 
     @Override
     public int getChildrenCount(int i) {
-        if(null != mChildGroupList)
-            return mChildGroupList.get(i).size();
+//        if (null != mChildGroupList && i < mChildGroupList.size())
+//            return mChildGroupList.get(i).size();
+        if(null != mGroupList && null != mGroupList.get(i) && null != mGroupList.get(i).getChildList()) {
+           return mGroupList.get(i).getChildList().size();
+        }
+
+
         return 0;
     }
 
     @Override
     public Object getGroup(int i) {
-        if(null != mGroupList)
+        if (null != mGroupList && i < mGroupList.size())
             mGroupList.get(i);
         return null;
     }
 
     @Override
     public Object getChild(int i, int i1) {
-        if(null != mChildGroupList)
-            return mChildGroupList.get(i).get(i1);
+//        if (null != mChildGroupList && null != mChildGroupList.get(i) &&
+//                i < mChildGroupList.get(i).size()
+//                && null != mChildGroupList.get(i).get(i1))
+//            return mChildGroupList.get(i).get(i1);
+
+
+        if(null != mGroupList && null != mGroupList.get(i) && null != mGroupList.get(i).getChildList()) {
+            return mGroupList.get(i).getChildList().get(i1);
+        }
+
         return null;
     }
 
@@ -81,7 +98,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int i, boolean b, View convertView, ViewGroup viewGroup) {
         ViewHolderGroup groupHolder;
-        if(null == convertView) {
+        if (null == convertView) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_trans_group, null);
             groupHolder = new ViewHolderGroup();
             groupHolder.textView = (TextView) convertView.findViewById(R.id.tv_time);
@@ -89,9 +106,9 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
             groupHolder.lineView = (TextView) convertView.findViewById(R.id.tv_line);
             convertView.setTag(groupHolder);
         } else {
-            groupHolder = (ViewHolderGroup)convertView.getTag();
+            groupHolder = (ViewHolderGroup) convertView.getTag();
         }
-        if(null != mGroupList.get(i))
+        if (null != mGroupList.get(i))
             groupHolder.textView.setText(mGroupList.get(i).getTime());
 
         if (b) {
@@ -108,7 +125,7 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(final int i, final int i1, boolean b, View convertView, ViewGroup viewGroup) {
         ViewHolderChild childHolder;
-        if(null == convertView) {
+        if (null == convertView) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_trans_child, null);
             childHolder = new ViewHolderChild();
             childHolder.childLayout = (RelativeLayout) convertView.findViewById(R.id.rl_layout);
@@ -120,27 +137,59 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
             childHolder.statusView = (TextView) convertView.findViewById(R.id.tv_status);
             convertView.setTag(childHolder);
         } else {
-            childHolder = (ViewHolderChild)convertView.getTag();
+            childHolder = (ViewHolderChild) convertView.getTag();
         }
 
-        if(null != mChildGroupList.get(i) && null != mChildGroupList.get(i).get(i1)) {
-            if(i1 == 0)
+//        if (null != mChildGroupList.get(i) && null != mChildGroupList.get(i).get(i1)) {
+//            if (i1 == 0)
+//                childHolder.lineView.setVisibility(View.VISIBLE);
+//            else
+//                childHolder.lineView.setVisibility(View.GONE);
+//            if (mChildGroupList.get(i).get(i1).isInput()) {
+//                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_down);
+//                childHolder.numView.setText("+" + mChildGroupList.get(i).get(i1).getNum());
+//                Log.e("====num0===", childHolder.numView.getText().toString());
+//            } else {
+//                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_up);
+//                childHolder.numView.setText("-" + mChildGroupList.get(i).get(i1).getNum());
+//                Log.e("====num1===", childHolder.numView.getText().toString());
+//            }
+//
+//            childHolder.addrview.setText(mChildGroupList.get(i).get(i1).getAddr());
+//            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getNum() + "");
+//            childHolder.timeView.setText(mChildGroupList.get(i).get(i1).getTime());
+//            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getStatus());
+//            childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(mContext, TransactionDetailActivity.class);
+//                    intent.putExtra("trans_detail", mChildGroupList.get(i).get(i1));
+//                    mContext.startActivity(intent);
+//                }
+//            });
+//        }
+
+
+        if (null != mGroupList.get(i) && null != mGroupList.get(i).getChildList().get(i1)) {
+            if (i1 == 0)
                 childHolder.lineView.setVisibility(View.VISIBLE);
-             else
+            else
                 childHolder.lineView.setVisibility(View.GONE);
-             if(mChildGroupList.get(i).get(i1).isInput())
-                 childHolder.iconView.setBackgroundResource(R.mipmap.arrow_down);
-             else
-                 childHolder.iconView.setBackgroundResource(R.mipmap.arrow_up);
-            childHolder.addrview.setText(mChildGroupList.get(i).get(i1).getAddr());
-            childHolder.numView.setText(mChildGroupList.get(i).get(i1).getNum() + "");
-            childHolder.timeView.setText(mChildGroupList.get(i).get(i1).getTime());
-            childHolder.statusView.setText(mChildGroupList.get(i).get(i1).getStatus());
+            if (mGroupList.get(i).getChildList().get(i1).isInput()) {
+                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_down);
+            } else {
+                childHolder.iconView.setBackgroundResource(R.mipmap.arrow_up);
+            }
+
+            childHolder.addrview.setText( mGroupList.get(i).getChildList().get(i1).getAddr());
+            childHolder.numView.setText( mGroupList.get(i).getChildList().get(i1).getNum() + "");
+            childHolder.timeView.setText( mGroupList.get(i).getChildList().get(i1).getTime());
+            childHolder.statusView.setText( mGroupList.get(i).getChildList().get(i1).getStatus());
             childHolder.childLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, TransactionDetailActivity.class);
-                    intent.putExtra("trans_detail", mChildGroupList.get(i).get(i1));
+                    intent.putExtra("trans_detail",  mGroupList.get(i).getChildList().get(i1));
                     mContext.startActivity(intent);
                 }
             });
@@ -159,13 +208,13 @@ public class TransactionListAdapter extends BaseExpandableListAdapter {
         return false;
     }
 
-    class ViewHolderGroup{
+    class ViewHolderGroup {
         private TextView textView;
         private ImageView imageView;
         private TextView lineView;
     }
 
-    class ViewHolderChild{
+    class ViewHolderChild {
         private RelativeLayout childLayout;
         private TextView lineView;
         private ImageView iconView;

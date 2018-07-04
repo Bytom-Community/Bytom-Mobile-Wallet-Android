@@ -16,6 +16,8 @@ public class TransactionListEntity {
     private String blockHeight;
     private int blockTransactionsCount;
     private long confirmation;
+    private String fee;
+    private String op;
 
     private ArrayList<InputsEntity> inputs;
     private ArrayList<OutputsEntity> outputs;
@@ -84,4 +86,19 @@ public class TransactionListEntity {
         this.outputs = outputs;
     }
 
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getOp() {
+        return op;
+    }
+
+    public void setOp(String op) {
+        this.op = op;
+    }
 }

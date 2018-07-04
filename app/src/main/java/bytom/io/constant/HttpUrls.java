@@ -10,6 +10,7 @@ package bytom.io.constant;
 public class HttpUrls {
 
     public final static String URL_TRANSACTIONS_LIST = "http://39.104.187.161:9888/v1/list-transactions";
+    public final static String URL_TRANSACTIONS_GAS = "http://39.104.187.161:9888/v1/estimate-transaction-gas";
 }
 
 

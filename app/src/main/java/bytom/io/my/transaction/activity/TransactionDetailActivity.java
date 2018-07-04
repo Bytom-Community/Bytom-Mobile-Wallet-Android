@@ -51,8 +51,8 @@ public class TransactionDetailActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_transaction_detail);
-        mEntity = (TransListItemEntity) getIntent().getSerializableExtra("trans_detail");
         init();
+        mEntity = (TransListItemEntity) getIntent().getSerializableExtra("trans_detail");
         showData(mEntity);
     }
 
@@ -62,8 +62,7 @@ public class TransactionDetailActivity extends Activity {
     }
 
     private void showData(TransListItemEntity entity) {
-        if(null == mEntity) return;
-
+        if (null == entity) return;
         mNumView.setText(entity.getNum() + "BTM");
         mStatusView.setText(entity.getStatus());
         mSendView.setText(entity.getSendAddr());
@@ -77,7 +76,7 @@ public class TransactionDetailActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(null != unbinder)
+        if (null != unbinder)
             unbinder.unbind();
     }
 
