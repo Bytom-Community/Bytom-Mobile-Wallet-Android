@@ -9,6 +9,7 @@
     <string name="as_management_transfer">Transfer</string>
     <string name="as_management_receipt">Receipt</string>
     <string name="as_management_transfer_failed">Transaction failed</string>
+    <string name="as_management_equ_to_rmb">≈ ￥ </string>
 
     <string name="as_transfer_title">Transfer</string>
     <string name="as_receipt_title">Collection code</string>

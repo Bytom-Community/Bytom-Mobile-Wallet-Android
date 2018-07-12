@@ -40,7 +40,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     //状态栏染色
-    compile('com.github.niorgai:StatusBarCompat:2.1.4', {
+    implementation('com.github.niorgai:StatusBarCompat:2.1.4', {
         exclude group: 'com.android.support'
     })
+
+    implementation 'com.github.amanjeetsingh150:CoolProgressViews:1.0'
 }

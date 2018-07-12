@@ -94,15 +94,29 @@
         android:layout_marginLeft="7.5dp"
         android:text="@string/as_management_recent_transactions" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/as_transfer_recent_list"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:gravity="center">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/as_transfer_recent_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.developers.coolprogressviews.SimpleArcProgress
+            android:id="@+id/progressView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:radius1="30dp"
+            app:colorofArc="@color/C10C2AE"
+            />
+    </RelativeLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/as_bottom_view_height"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/as_transfer"

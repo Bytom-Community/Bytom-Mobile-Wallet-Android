@@ -83,7 +83,7 @@ public class NetworkDemoActivity extends Activity implements View.OnClickListene
     private void newGsonRequest() {
         String url = "https://api.github.com/";
         // Request a string response from the provided URL.
-        GsonRequest jsonRequest = new GsonRequest(url, GithubBean.class, null,
+        GsonRequest jsonRequest = new GsonRequest(Request.Method.GET, url, GithubBean.class, null, null,
                 new Response.Listener<GithubBean>() {
                     @Override
                     public void onResponse(GithubBean response) {

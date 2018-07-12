@@ -32,6 +32,7 @@
                 android:id="@+id/as_transfer_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:hint="BTMfdsafdsa...fewiojlfdaf"/>
 
             <TextView

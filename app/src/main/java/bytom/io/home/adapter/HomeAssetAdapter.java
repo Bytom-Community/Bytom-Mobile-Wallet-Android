@@ -107,6 +107,10 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
         return mList.size() + 1;
     }
 
+    public HomeAssetsBean.AssetsBean getItem(int position) {
+        return mList.get(position);
+    }
+
     public HomeAssetAdapter (Context context, List<HomeAssetsBean.AssetsBean> list, OnAssetClickListener listener) {
         this.mContext = context;
         if (list != null){

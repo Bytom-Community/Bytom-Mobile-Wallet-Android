@@ -13,8 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -72,18 +76,19 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
     private void initData () {
         Map<String,String> map= new HashMap<>();
         map.put("address","bm1qsk6dj6pym7yng0ev7wne7tm3d54ea2sjz5tyxk");
-        GsonRequest jsonRequest = new GsonRequest(UrlConfig.assetsList(map), HomeAssetsBean.class, null,
+        GsonRequest jsonRequest = new GsonRequest(Request.Method.POST, UrlConfig.assetsList(map),
+                HomeAssetsBean.class, null, null,
                 new Response.Listener<HomeAssetsBean>() {
                     @Override
                     public void onResponse(HomeAssetsBean response) {
                         // Display the first 500 characters of the response string.
-                        Log.d("http", "onResponse: "+response);
+                        Log.d("http", "onResponse: " + response);
                         showList(response.getAssets());
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("http", "error: "+error);
+                Log.d("http", "error: " + error);
             }
         });
         VolleyWrapper.getInstance(getContext()).addToRequestQueue(jsonRequest);
@@ -128,8 +133,12 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
 
     @Override
     public void onItemClick(int position) {
-        startActivity(new Intent(getContext(), AssetManagementActivity.class));
-//        Toast.makeText(getContext(), "条目:"+position, Toast.LENGTH_SHORT).show();
+        HomeAssetsBean.AssetsBean bean = mAdapter.getItem(position);
+        String address = "bm1qsk6dj6pym7yng0ev7wne7tm3d54ea2sjz5tyxk";
+        String assetId = bean.getAssetID();
+        String amount = bean.getAmount();
+
+        AssetManagementActivity.startActivity(getActivity(), address, assetId, amount);
     }
 
     public interface OnMenuClickListener {

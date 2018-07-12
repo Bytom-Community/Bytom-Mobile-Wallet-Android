@@ -9,12 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
+import bytom.io.assetmanage.bean.ListTransactionsBean;
 import bytom.io.assetmanage.bean.TransferBean;
 
 /**
@@ -23,14 +28,15 @@ import bytom.io.assetmanage.bean.TransferBean;
 public class RecentTransferAdapter extends RecyclerView.Adapter {
     private Context mContext;
 
-    private List<TransferBean> mDataList;
+    private List<ListTransactionsBean.TransactionsBean> mDataList;
 
     public RecentTransferAdapter(Context context) {
+        super();
         this.mContext = context;
         mDataList = new ArrayList<>();
     }
 
-    public void setData(List<TransferBean> data) {
+    public void setData(List<ListTransactionsBean.TransactionsBean> data) {
         if (data != null) {
             mDataList.clear();
             this.mDataList.addAll(data);
@@ -66,12 +72,12 @@ public class RecentTransferAdapter extends RecyclerView.Adapter {
 
         public RecentTransferViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
-        public void bind(TransferBean transferBean) {
+        public void bind(ListTransactionsBean.TransactionsBean transferBean) {
             //Transfer type
-            int transferType = transferBean.getTransferType();
+            int transferType = 0;//transferBean.get;
             if (transferType == 0) {
                 transferTypeIcon.setImageResource(R.drawable.arrow_down);
             } else {
@@ -79,12 +85,16 @@ public class RecentTransferAdapter extends RecyclerView.Adapter {
             }
 
             //Other
-            transferAddress.setText(transferBean.getTransferAddress());
-            transferTime.setText(transferBean.getTransferTime());
-            numberOfTransactions.setText(transferBean.getNumberOfTransactions());
+            transferAddress.setText(transferBean.getBlockID());
+
+            long time = transferBean.getTimestamp();
+            String timeText = new SimpleDateFormat("yyyy-MM-dd hh:mm", Locale.ENGLISH).format(time * 1000);
+            transferTime.setText(timeText);
+
+            numberOfTransactions.setText(transferBean.getConfirmation());
 
             //Transfer result
-            boolean transferSuccess = transferBean.isTransferSuccess();
+            boolean transferSuccess = true;
             if(!transferSuccess) {
                 //failed
                 transferResult.setText(R.string.as_management_transfer_failed);

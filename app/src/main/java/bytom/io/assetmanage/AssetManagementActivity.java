@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
+import bytom.io.utils.Constants;
 import bytom.io.utils.StatusBarUtil;
 
 /**
@@ -48,9 +49,9 @@ public class AssetManagementActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(
+        /*transaction.setCustomAnimations(
                 android.R.anim.slide_in_left, android.R.anim.slide_out_right,
-                android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                android.R.anim.slide_in_left, android.R.anim.slide_out_right);*/
         transaction.add(R.id.fragment_container, new AssetMangementFragment(),
                 AssetMangementFragment.TAG);
         //transaction.addToBackStack(null);
@@ -59,5 +60,14 @@ public class AssetManagementActivity extends AppCompatActivity {
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, AssetManagementActivity.class));
+    }
+
+    public static void startActivity(Context context, String address, String assetId, String amount) {
+        Intent intent = new Intent(context, AssetManagementActivity.class);
+        intent.putExtra(Constants.EXTRA_ADDRESS, address);
+        intent.putExtra(Constants.EXTRA_ASSET_ID, assetId);
+        intent.putExtra(Constants.EXTRA_AMOUNT, amount);
+
+        context.startActivity(intent);
     }
 }
