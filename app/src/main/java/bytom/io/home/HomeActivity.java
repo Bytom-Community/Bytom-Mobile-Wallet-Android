@@ -1,5 +1,6 @@
 package bytom.io.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
+import bytom.io.activity.CreateWalletActivity;
+import bytom.io.activity.ImportWalletActivity;
 import bytom.io.home.adapter.HomeViewPagerAdapter;
 import bytom.io.home.fragment.HomeAssetsFragment;
 import bytom.io.home.fragment.HomeMineFragment;
 import bytom.io.utils.StatusBarUtil;
 
-public class HomeActivity extends AppCompatActivity implements BottomBar.OnTabChangeListener, HomeAssetsFragment.OnMenuClickListener{
+public class HomeActivity extends AppCompatActivity implements BottomBar.OnTabChangeListener, HomeAssetsFragment.OnMenuClickListener {
 
     @BindView(R.id.vp_home)
     HomeViewPager mVp;
@@ -33,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements BottomBar.OnTabCh
     DrawerLayout mDrawerLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
@@ -42,7 +45,7 @@ public class HomeActivity extends AppCompatActivity implements BottomBar.OnTabCh
         initDrawerLayout();
     }
 
-    private void initViewPager() {
+    private void initViewPager () {
         mFragments = new ArrayList<>();
         HomeAssetsFragment homeAssetsFragment = new HomeAssetsFragment();
         homeAssetsFragment.setMenuListener(this);
@@ -58,65 +61,67 @@ public class HomeActivity extends AppCompatActivity implements BottomBar.OnTabCh
     }
 
     @Override
-    public void onTabChanged(int position) {
+    public void onTabChanged (int position) {
         mVp.setCurrentItem(position);
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy () {
         super.onDestroy();
-        if(null != mRighDrawerView)
+        if (null != mRighDrawerView)
             mRighDrawerView.onDestroy();
     }
 
-    private void initDrawerLayout() {
+    private void initDrawerLayout () {
         mDrawerLayout.setScrimColor(Color.TRANSPARENT);
         mRighDrawerView.setDrawerClickListener(onDrawerClickListener);
     }
 
-    private void onDrawer() {
+    private void onDrawer () {
         mDrawerLayout.openDrawer(Gravity.RIGHT);
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED | Gravity.RIGHT);
     }
 
     @Override
-    public void onMenuClick() {
+    public void onMenuClick () {
         onDrawer();
     }
 
     RightDrawerView.OnDrawerClickListener onDrawerClickListener = new RightDrawerView.OnDrawerClickListener() {
         @Override
-        public void onPersonalClick() {
+        public void onPersonalClick () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
             Toast.makeText(HomeActivity.this, "私房钱", Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onVaultClick() {
+        public void onVaultClick () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
             Toast.makeText(HomeActivity.this, "小金库", Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onLittleClick() {
+        public void onLittleClick () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
             Toast.makeText(HomeActivity.this, "零钱包钱", Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onCreateClick() {
+        public void onCreateClick () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
-            Toast.makeText(HomeActivity.this, "创建钱包", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, CreateWalletActivity.class));
+
+
         }
 
         @Override
-        public void onImportClick() {
+        public void onImportClick () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
-            Toast.makeText(HomeActivity.this, "导入钱包", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, ImportWalletActivity.class));
         }
 
         @Override
-        public void onCancelDrawer() {
+        public void onCancelDrawer () {
             mDrawerLayout.closeDrawer(Gravity.RIGHT);
         }
     };

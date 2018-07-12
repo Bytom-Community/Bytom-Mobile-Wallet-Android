@@ -30,7 +30,7 @@ public class HomeAssetAdapter extends RecyclerView.Adapter {
     private final Context mContext;
     private final List<HomeAssetsBean.AssetsBean> mList;
     private final OnAssetClickListener mListener;
-    private DecimalFormat df = new DecimalFormat("###.####");
+    private DecimalFormat df = new DecimalFormat("###.#########");
 
     @NonNull
     @Override

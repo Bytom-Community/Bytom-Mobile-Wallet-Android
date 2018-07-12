@@ -19,19 +19,23 @@
     <Button
         android:id="@+id/bt_asset_management"
         style="@style/layout_match_wrap"
-        android:text="资产管理" />
+        android:text="资产管理"
+        android:visibility="gone"
+        />
 
     <Button
         android:id="@+id/bt_wallet"
         style="@style/layout_match_wrap"
         app:layout_constraintTop_toBottomOf="@id/bt_asset_management"
-        android:text="@string/wallet"/>
+        android:text="@string/wallet"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btn_about"
         style="@style/layout_match_wrap"
         app:layout_constraintTop_toBottomOf="@id/bt_wallet"
-        android:text="@string/about"/>
+        android:text="@string/about"
+        android:visibility="gone"/>
     <Button
         android:id="@+id/bt_home"
         style="@style/layout_match_wrap"
@@ -42,12 +46,14 @@
         android:id="@+id/btn_currency"
         style="@style/layout_match_wrap"
         app:layout_constraintTop_toBottomOf="@id/bt_home"
-        android:text="@string/currency"/>
+        android:text="@string/currency"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btn_site"
         style="@style/layout_match_wrap"
         app:layout_constraintTop_toBottomOf="@id/btn_currency"
-        android:text="@string/site"/>
+        android:text="@string/site"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>

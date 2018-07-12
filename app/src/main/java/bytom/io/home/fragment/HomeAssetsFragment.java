@@ -1,5 +1,6 @@
 package bytom.io.home.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,11 +24,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import bytom.io.R;
+import bytom.io.assetmanage.AssetManagementActivity;
 import bytom.io.common.GsonRequest;
 import bytom.io.common.UrlConfig;
 import bytom.io.common.VolleyWrapper;
+import bytom.io.home.ReceiveActivity;
 import bytom.io.home.adapter.HomeAssetAdapter;
 import bytom.io.home.bean.HomeAssetsBean;
+import bytom.io.home.holder.SendActivity;
 
 /**
  * Created by DongFangZhou on 2018/6/21.
@@ -109,12 +113,12 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
 
     @Override
     public void onSendClick() {
-        Toast.makeText(getContext(), "转账", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getContext(), SendActivity.class));
     }
 
     @Override
     public void onReciveClick() {
-        Toast.makeText(getContext(), "收款", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getContext(), ReceiveActivity.class));
     }
 
     @Override
@@ -124,7 +128,8 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
 
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(getContext(), "条目:"+position, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getContext(), AssetManagementActivity.class));
+//        Toast.makeText(getContext(), "条目:"+position, Toast.LENGTH_SHORT).show();
     }
 
     public interface OnMenuClickListener {

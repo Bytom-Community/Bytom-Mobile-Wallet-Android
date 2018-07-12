@@ -17,7 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import bytom.io.AboutActivity;
 import bytom.io.R;
+import bytom.io.activity.CurrencyActivity;
+import bytom.io.activity.SiteActivity;
+import bytom.io.activity.WalletListActivity;
 import bytom.io.home.adapter.HomeMyAdapter;
 import bytom.io.my.transaction.activity.TransactionListActivity;
 
@@ -56,6 +60,13 @@ public class HomeMineFragment extends Fragment implements HomeMyAdapter.OnItemCl
     private void init () {
         mRv.setLayoutManager(new LinearLayoutManager(getContext()));
         mRv.setAdapter(new HomeMyAdapter(getContext(),item_img,item_text_left,item_text_right,this));
+        mRlWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                Intent intent = new Intent(getContext(), WalletListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -69,11 +80,11 @@ public class HomeMineFragment extends Fragment implements HomeMyAdapter.OnItemCl
         switch (position){
             case 0:
                 //节点
-                Toast.makeText(getContext(), "节点", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), SiteActivity.class));
                 break;
             case 1:
                 //货币
-                Toast.makeText(getContext(), "货币", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), CurrencyActivity.class));
                 break;
             case 2:
                 //分享
@@ -81,7 +92,7 @@ public class HomeMineFragment extends Fragment implements HomeMyAdapter.OnItemCl
                 break;
             case 3:
                 //关于
-                Toast.makeText(getContext(), "关于", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), AboutActivity.class));
                 break;
 
         }
