@@ -29,6 +29,11 @@
     <string name="as_transfer_passwd_cancel">Cancel</string>
     <string name="as_transfer_passwd_commit">Commit</string>
 
+    <!-- Scan -->
+    <string name="scan_title">Scan</string>
+    <string name="scan_menu_gallery">Gallery</string>
+    <string name="scan_no_result">No related information scanned</string>
+
     <!-- demos -->
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>

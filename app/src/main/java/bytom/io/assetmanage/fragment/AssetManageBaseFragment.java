@@ -1,4 +1,4 @@
-package bytom.io.assetmanage;
+package bytom.io.assetmanage.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

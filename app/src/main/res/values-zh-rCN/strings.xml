@@ -28,6 +28,11 @@
     <string name="as_transfer_passwd_cancel">取消</string>
     <string name="as_transfer_passwd_commit">提交</string>
 
+    <!-- Scan -->
+    <string name="scan_title">扫一扫</string>
+    <string name="scan_menu_gallery">相册</string>
+    <string name="scan_no_result">未扫描到相关信息</string>
+
     <!-- demos -->
     <string name="request_string">String Request</string>
     <string name="request_json">Json Request</string>

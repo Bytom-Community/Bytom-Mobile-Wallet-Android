@@ -1,5 +1,6 @@
 package bytom.io.home.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.JsonObject;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONObject;
 
@@ -36,6 +39,8 @@ import bytom.io.home.ReceiveActivity;
 import bytom.io.home.adapter.HomeAssetAdapter;
 import bytom.io.home.bean.HomeAssetsBean;
 import bytom.io.home.holder.SendActivity;
+import bytom.io.scan.CustomCaptureActivity;
+import bytom.io.scan.ScanWrapper;
 
 /**
  * Created by DongFangZhou on 2018/6/21.
@@ -128,7 +133,18 @@ public class HomeAssetsFragment extends Fragment implements HomeAssetAdapter.OnA
 
     @Override
     public void onScanClick() {
-        Toast.makeText(getContext(), "扫描", Toast.LENGTH_SHORT).show();
+        ScanWrapper.startScanQRCode(this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        int handleSuccess = ScanWrapper.handleScanResult(getContext(), requestCode, resultCode, data);
+        if (handleSuccess == 1) {
+            Toast.makeText(getActivity(), "扫描成功", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getActivity(), "取消扫描", Toast.LENGTH_LONG).show();
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

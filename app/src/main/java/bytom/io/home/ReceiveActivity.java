@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
-import bytom.io.assetmanage.ReceiptFragment;
+import bytom.io.assetmanage.fragment.ReceiptFragment;
 
 public class ReceiveActivity extends AppCompatActivity {
 

@@ -38,7 +38,7 @@
     <style name="AsTransferEdit" parent="Base.Widget.AppCompat.EditText">
         <item name="android:layout_height">51dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">15sp</item>
         <item name="android:ems">10</item>
         <item name="android:inputType">textPersonName</item>
@@ -68,6 +68,8 @@
 
     <style name="CustomToolbar" parent="Widget.AppCompat.ActionBar">
         <item name="toolbarNavigationButtonStyle">@style/CustomToolbarNavigationButtonStyle</item>
+        <item name="android:actionMenuTextColor">@color/CACACAC</item>
+        <item name="android:textSize">17dp</item>
     </style>
 
     <style name="CustomToolbarNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">

@@ -1,4 +1,4 @@
-package bytom.io.assetmanage;
+package bytom.io.assetmanage.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

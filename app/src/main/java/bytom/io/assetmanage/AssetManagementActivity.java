@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import bytom.io.R;
+import bytom.io.assetmanage.fragment.AssetMangementFragment;
 import bytom.io.utils.Constants;
 import bytom.io.utils.StatusBarUtil;
 

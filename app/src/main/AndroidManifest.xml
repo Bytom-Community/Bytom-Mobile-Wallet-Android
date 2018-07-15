@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="bytom.io">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="bytom.io">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -106,6 +107,13 @@
         <activity android:name=".home.holder.SendActivity"
                   android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".scan.CustomCaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+
+        <activity android:name=".assetmanage.TransferActivity" />
     </application>
 
 </manifest>
