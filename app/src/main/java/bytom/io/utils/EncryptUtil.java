@@ -1,12 +1,14 @@
 package bytom.io.utils;
 
+import android.util.Log;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
 public class EncryptUtil {
-
+    private static final String TAG = "EncryptUtil";
     // PublicKeySize is the size, in bytes, of public keys as used in this package.
     private static final int PublicKeySize = 32;
     // PrivateKeySize is the size, in bytes, of private keys as used in this package.
@@ -14,9 +16,9 @@ public class EncryptUtil {
     // SignatureSize is the size, in bytes, of signatures generated and verified by this package.
     private static final int SignatureSize = 64;
 
-    public boolean generateKeyPair(byte[] publicKey, byte[] privateKey ) throws Exception {
+    public static boolean generateKeyPair(byte[] publicKey, byte[] privateKey ) throws Exception {
 
-        byte []privkey = null;
+        byte []privkey = new byte[PublicKeySize];
         Edwards25519Util edwards25519Util = new Edwards25519Util();
         Edwards25519Util.ExtendedGroupElement A  = edwards25519Util.new ExtendedGroupElement();
 
@@ -36,10 +38,8 @@ public class EncryptUtil {
         byte []hBytes = Arrays.copyOf(digest, PublicKeySize);
         edwards25519Util.GeScalarMultBase(A,hBytes);
 
-        byte[] publicKeyBytes = new byte[32];
-        A.ToBytes(publicKeyBytes);
-        System.arraycopy(publicKeyBytes,0,privateKey,PublicKeySize,PublicKeySize);
-        System.arraycopy(publicKeyBytes,0,publicKey,0,PublicKeySize);
+        A.ToBytes(publicKey);
+        System.arraycopy(publicKey,0,privateKey,PublicKeySize,PublicKeySize);
 
         return true;
     }
@@ -138,36 +138,26 @@ public class EncryptUtil {
         Edwards25519Util.ProjectiveGroupElement R  = edwards25519Util.new ProjectiveGroupElement();
 
         byte[] b = new byte[32];
-        System.arraycopy(sign,32,b, PublicKeySize,PublicKeySize);
+        System.arraycopy(sign,32,b, 0,PublicKeySize);
         edwards25519Util.GeDoubleScalarMultVartime(R, hReduced, A, b);
 
         byte[] checkR = new byte[32];
         R.ToBytes(checkR);
-        System.arraycopy(sign,32,b, PublicKeySize,PublicKeySize);
-        return ConstantTimeCompare(b, checkR) == 1;
+        System.arraycopy(sign,0,b, 0,PublicKeySize);
+        return ConstantTimeCompare(b, checkR);
     }
 
-    private static int ConstantTimeCompare(byte[]x,byte[] y)  {
+    private static boolean ConstantTimeCompare(byte[]x,byte[] y)  {
         if (x.length !=y.length) {
-            return 0;
+            return false;
         }
-
-        byte v = 0;
 
         for (int i = 0; i < x.length; i++) {
-            v |= x[i] ^ y[i];
+            if( x[i] != y[i]){
+                return false;
+            };
         }
 
-        return ConstantTimeByteEq(v, (byte)0);
-    }
-
-    // ConstantTimeByteEq returns 1 if x == y and 0 otherwise.
-    private static int ConstantTimeByteEq(byte x, byte y )  {
-        byte z = (byte)(x ^ y);
-        z &= z >> 4;
-        z &= z >> 2;
-        z &= z >> 1;
-
-        return (int)(z);
+        return true;
     }
 }

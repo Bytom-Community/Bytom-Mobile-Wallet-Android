@@ -73,10 +73,16 @@ public class Edwards25519Util {
             ToProjective(q);
             q.Double(r);
         }
+        public void Zero() {
+            FeZero(X);
+            FeOne(Y);
+            FeOne(Z);
+            FeZero(T);
+        }
         public void ToProjective(ProjectiveGroupElement r) {
-            System.arraycopy(r.X,0, X,0,SIZE);
-            System.arraycopy(r.Y,0, Y,0,SIZE);
-            System.arraycopy(r.Z,0, Z,0,SIZE);
+            System.arraycopy(X,0, r.X,0,SIZE);
+            System.arraycopy(Y,0, r.Y,0,SIZE);
+            System.arraycopy(Z,0, r.Z,0,SIZE);
         }
         public void ToBytes(byte[] s) {
             int [] recip = new int[SIZE];
@@ -172,7 +178,7 @@ public class Edwards25519Util {
         h0[2]= load_3(src,7 ) << 5;
         h0[3]= load_3(src,10) << 3;
         h0[4]= load_3(src,13) << 2;
-        h0[5]= load_3(src,16);
+        h0[5]= load_4(src,16);
         h0[6]= load_3(src,20) << 7;
         h0[7]= load_3(src,23) << 5;
         h0[8]= load_3(src,26) << 4;
@@ -281,6 +287,7 @@ public class Edwards25519Util {
             e[i] -= carry << 4;
         }
         e[63] += carry;
+        h.Zero();
         // each e[i] is between -8 and 8.
         PreComputedGroupElement t = new PreComputedGroupElement();
         CompletedGroupElement r = new CompletedGroupElement();
@@ -307,14 +314,14 @@ public class Edwards25519Util {
             r.ToExtended(h);
         }
     }
-    private static long getUint32(long l){
-        return l & 0x00000000ffffffff;
+    private static long getUint32(int l){
+        return l & 0x00000000ffffffffl;
     }
 
     private static int equal(int b, int c)  {
-        long x = getUint32(b ^ c);
-        x--;
-        return (int)(x >> 31);
+        int x = (b ^ c);
+        long y = getUint32(--x);
+        return (int)(y >> 31);
     }
 
     private static int negative(int b){
@@ -677,7 +684,16 @@ public class Edwards25519Util {
     }
     private static long[] feSquare(int[] f) {
         long[] f0 = new long[10];
-        System.arraycopy(f0,0,f,0,SIZE);
+        f0[0]= (long)(f[0]);
+        f0[1]= (long)(f[1]);
+        f0[2]= (long)(f[2]);
+        f0[3]= (long)(f[3]);
+        f0[4]= (long)(f[4]);
+        f0[5]= (long)(f[5]);
+        f0[6]= (long)(f[6]);
+        f0[7]= (long)(f[7]);
+        f0[8]= (long)(f[8]);
+        f0[9]= (long)(f[9]);
         long f0_2 =(long)(2 * f[0]);
         long f1_2 =(long)(2 * f[1]);
         long f2_2 =(long)(2 * f[2]);
@@ -721,11 +737,10 @@ public class Edwards25519Util {
         FeOne(t.yMinusX);
         FeZero(t.xy2d);
         for ( int i = 0; i < 8; i++) {
-            //TODO
             PreComputedGroupElementCMove(t, Constant.base[pos][i], equal(bAbs, i+1));
         }
-        System.arraycopy(minusT.yPlusX,0, t.yMinusX,0,SIZE);
-        System.arraycopy(minusT.yMinusX, 0,t.yPlusX,0,SIZE);
+        System.arraycopy(t.yMinusX,0, minusT.yPlusX,0,SIZE);
+        System.arraycopy(t.yPlusX,0, minusT.yMinusX,0,SIZE);
         FeNeg(minusT.xy2d, t.xy2d);
         PreComputedGroupElementCMove(t, minusT, bNegative);
     }
@@ -840,12 +855,14 @@ public class Edwards25519Util {
         return ((long)result) & 0xffffffffL;
 
     }
-    //TODO
     public void GeDoubleScalarMultVartime(ProjectiveGroupElement r, byte[] a , ExtendedGroupElement A, byte[] b) {
         byte[] aSlide = new byte[256];
         byte[] bSlide = new byte[256];
 
         CachedGroupElement[] Ai = new CachedGroupElement[8];// A,3A,5A,7A,9A,11A,13A,15A
+        for(int i=0;i<Ai.length;i++){
+            Ai[i] = new CachedGroupElement();
+        }
         CompletedGroupElement t = new CompletedGroupElement();
         ExtendedGroupElement u = new ExtendedGroupElement();
         ExtendedGroupElement A2 = new ExtendedGroupElement();
