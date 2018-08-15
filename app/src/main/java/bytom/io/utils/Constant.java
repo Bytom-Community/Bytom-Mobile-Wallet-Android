@@ -12,7 +12,7 @@ public class Constant {
     public final static int[] d2 = {
             -21827239, -5839606, -30745221, 13898782, 229458, 15978800, -12551817, -6495438, 29715968, 9444199,
     };
-    public static final int KEYSIZE = 64;
+
     // SqrtM1 is the square-root of -1 in the field.
     public final static int[] SqrtM1 = {
             -32595792, -7943725, 9377950, 3500415, 12389472, -272473, -25146209, -2005654, 326686, 11406482
@@ -1132,15 +1132,6 @@ public class Constant {
                 new int[]{-22448644, 15655569, 7018479, -4410003, -30314266, -1201591, -1853465, 1367120, 25127874, 6671743},
                 new int[]{29701166, -14373934, -10878120, 9279288, -17568, 13127210, 21382910, 11042292, 25838796, 4642684},
                 new int[]{-20430234, 14955537, -24126347, 8124619, -5369288, -5990470, 30468147, -13900640, 18423289, 4177476});}
-
-    public class XKey {
-        byte[] ID;
-        String KeyType ;
-        String Alias ;
-        byte[] Xprv;
-        byte[] XPub;
-    }
-
     public static String bytesToHex(byte[] bytes) {
         StringBuilder buf = new StringBuilder(bytes.length * 2);
         for(byte b : bytes) {

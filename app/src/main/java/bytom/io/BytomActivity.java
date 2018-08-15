@@ -17,7 +17,7 @@ import bytom.io.activity.WalletListActivity;
 import bytom.io.assetmanage.AssetManagementActivity;
 import bytom.io.home.HomeActivity;
 import bytom.io.utils.Constant;
-import bytom.io.crypto.EncryptUtil;
+import bytom.io.utils.EncryptUtil;
 
 public class BytomActivity extends AppCompatActivity {
 
